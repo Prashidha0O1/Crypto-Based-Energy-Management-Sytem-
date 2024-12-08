@@ -44,22 +44,31 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMainHomeScreen = new javax.swing.JPanel();
-        buttonHome = new javax.swing.JButton();
-        buttonAboutUs = new javax.swing.JButton();
-        buttonContactUs = new javax.swing.JButton();
-        buttonWhitepaper = new javax.swing.JButton();
-        lblSloganHeading1 = new javax.swing.JLabel();
-        lblSloganHeading2 = new javax.swing.JLabel();
-        lblMotto = new javax.swing.JLabel();
-        pnlFuture = new javax.swing.JPanel();
-        lblSolarFuture = new javax.swing.JLabel();
-        pnlUsers = new javax.swing.JPanel();
-        lblUserLogo = new javax.swing.JLabel();
-        lblUserCount = new javax.swing.JLabel();
-        lblUserCount2 = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
-        lblBackgroundImage = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         pnlLoginScreen = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         pnlLoadingScreen = new javax.swing.JPanel();
         prgsbarLoading = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -69,100 +78,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         pnlMainHomeScreen.setBackground(new java.awt.Color(132, 201, 229));
         pnlMainHomeScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        buttonHome.setText("Home ");
-        pnlMainHomeScreen.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 16, -1, -1));
-
-        buttonAboutUs.setText("Dashboard");
-        pnlMainHomeScreen.add(buttonAboutUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 16, -1, -1));
-
-        buttonContactUs.setText("Contact Us ");
-        pnlMainHomeScreen.add(buttonContactUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 16, -1, -1));
-
-        buttonWhitepaper.setText("WhitePaper");
-        pnlMainHomeScreen.add(buttonWhitepaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 16, -1, -1));
-
-        lblSloganHeading1.setBackground(new java.awt.Color(6, 79, 109));
-        lblSloganHeading1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
-        lblSloganHeading1.setForeground(new java.awt.Color(6, 79, 109));
-        lblSloganHeading1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSloganHeading1.setText("Greener Future With");
-        pnlMainHomeScreen.add(lblSloganHeading1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 523, 62));
-
-        lblSloganHeading2.setBackground(new java.awt.Color(6, 79, 109));
-        lblSloganHeading2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
-        lblSloganHeading2.setForeground(new java.awt.Color(6, 79, 109));
-        lblSloganHeading2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSloganHeading2.setText("Renewable Energy ");
-        pnlMainHomeScreen.add(lblSloganHeading2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 523, 62));
-
-        lblMotto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblMotto.setForeground(new java.awt.Color(92, 116, 141));
-        lblMotto.setText("Now with crypto, we're powering sustainable energy solutions for a decentralized future.");
-        pnlMainHomeScreen.add(lblMotto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 773, 40));
-
-        pnlFuture.setBackground(new java.awt.Color(227, 242, 253));
-
-        lblSolarFuture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/solarpanel.png"))); // NOI18N
-        lblSolarFuture.setText("Start A Greener Future with us.");
-        lblSolarFuture.setBorder(new javax.swing.border.MatteBorder(null));
-
-        javax.swing.GroupLayout pnlFutureLayout = new javax.swing.GroupLayout(pnlFuture);
-        pnlFuture.setLayout(pnlFutureLayout);
-        pnlFutureLayout.setHorizontalGroup(
-            pnlFutureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFutureLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSolarFuture, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlFutureLayout.setVerticalGroup(
-            pnlFutureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSolarFuture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pnlMainHomeScreen.add(pnlFuture, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 416, 390, -1));
-
-        pnlUsers.setBackground(new java.awt.Color(227, 242, 253));
-        pnlUsers.setBorder(new javax.swing.border.MatteBorder(null));
-
-        lblUserLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/users.png"))); // NOI18N
-        lblUserLogo.setText("jLabel6");
-
-        lblUserCount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblUserCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUserCount.setText("12M+");
-
-        lblUserCount2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblUserCount2.setText("Customers");
-
-        javax.swing.GroupLayout pnlUsersLayout = new javax.swing.GroupLayout(pnlUsers);
-        pnlUsers.setLayout(pnlUsersLayout);
-        pnlUsersLayout.setHorizontalGroup(
-            pnlUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUsersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblUserLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserCount2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUserCount, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        pnlUsersLayout.setVerticalGroup(
-            pnlUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUsersLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(pnlUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUsersLayout.createSequentialGroup()
-                        .addComponent(lblUserCount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserCount2))
-                    .addComponent(lblUserLogo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlMainHomeScreen.add(pnlUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 416, -1, 82));
 
         btnLogOut.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnLogOut.setText("Log Out");
@@ -174,18 +89,207 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         });
         pnlMainHomeScreen.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 140, 50));
 
-        lblBackgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/bc.PNG"))); // NOI18N
-        pnlMainHomeScreen.add(lblBackgroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Renewable Energy");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 407, 77));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Greener Future With");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 470, 77));
+
+        jLabel7.setText("Now with crypto, we're powering sustainable energy solutions for a decentralized future.");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 480, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/bc.PNG"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("Home", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Dashboard", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1290, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 849, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("About Us", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1290, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 849, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("WhitePaper", jPanel4);
+
+        pnlMainHomeScreen.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1290, 880));
+
+        pnlLoginScreen.setBackground(new java.awt.Color(204, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 255)));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 102));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/solana.png"))); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/ethereum.png"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/logo.PNG"))); // NOI18N
+        jLabel12.setText("jLabel12");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("EnerChain");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(40, 40, 40))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addGap(63, 63, 63)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addGap(0, 181, Short.MAX_VALUE))
+        );
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setText("Login with your credentials ");
+
+        jLabel15.setText("jLabel15");
+
+        jTextField1.setText("Username");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Username");
+
+        jLabel17.setText("Password");
+
+        jTextField2.setText("Passsword");
 
         javax.swing.GroupLayout pnlLoginScreenLayout = new javax.swing.GroupLayout(pnlLoginScreen);
         pnlLoginScreen.setLayout(pnlLoginScreenLayout);
         pnlLoginScreenLayout.setHorizontalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addGap(134, 134, 134))
+                    .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                        .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13))
+                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                                .addGap(215, 215, 215)
+                                .addComponent(jLabel15))
+                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlLoginScreenLayout.setVerticalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel13)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel15)
+                .addGap(92, 92, 92)
+                .addComponent(jLabel14)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -267,6 +371,10 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         loadScreen("LoginScreen");
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
     
     
     /**
@@ -307,27 +415,36 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton buttonAboutUs;
-    private javax.swing.JButton buttonContactUs;
-    private javax.swing.JButton buttonHome;
-    private javax.swing.JButton buttonWhitepaper;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel lblBackgroundImage;
-    private javax.swing.JLabel lblMotto;
-    private javax.swing.JLabel lblSloganHeading1;
-    private javax.swing.JLabel lblSloganHeading2;
-    private javax.swing.JLabel lblSolarFuture;
-    private javax.swing.JLabel lblUserCount;
-    private javax.swing.JLabel lblUserCount2;
-    private javax.swing.JLabel lblUserLogo;
-    private javax.swing.JPanel pnlFuture;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel pnlLoadingScreen;
     private javax.swing.JPanel pnlLoginScreen;
     private javax.swing.JPanel pnlMainHomeScreen;
-    private javax.swing.JPanel pnlUsers;
     private javax.swing.JProgressBar prgsbarLoading;
     // End of variables declaration//GEN-END:variables
 }
