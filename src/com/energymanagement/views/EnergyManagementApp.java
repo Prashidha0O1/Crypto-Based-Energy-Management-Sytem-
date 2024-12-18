@@ -3,6 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.energymanagement.views;
+import com.energymanagement.model.EnergyTransaction;
+import com.energymanagement.util.ValidationUtil;
+import java.util.LinkedList;
+import javax.swing.*;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+
+
 
 /**
  *
@@ -11,11 +22,20 @@ package com.energymanagement.views;
 public class EnergyManagementApp extends javax.swing.JFrame {
     
     private java.awt.CardLayout cardLayout;
+    private List<EnergyTransaction> energyTransactions;
+    
     /**
      * Creates new form NewJFrame
      */
     public EnergyManagementApp() {
+//        Image applogo =  new ImageIcon(this.getClass().getResource("/logo.PNG")).getImage();
+//        this.setIconImage(applogo);
+        setResizable(false);
+        setLocation(200,10);
         initComponents();
+        initializeLayout();
+        startProgress();
+        initData();
     }
     
     private void loadScreen(String screenName) {
@@ -34,6 +54,90 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         // Start with the loading screen
         loadScreen("LoadingScreen");
     }
+    
+    private void startProgress() {
+        SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
+        @Override
+        protected Void doInBackground() throws Exception {
+            for (int i = 0; i <= 100; i++) {
+                Thread.sleep(30); // Simulated delay
+                publish(i); // Update progress
+            }
+            return null;
+        }
+
+        @Override
+        protected void process(java.util.List<Integer> chunks) {
+            int progress = chunks.get(chunks.size() - 1);
+            prgsbarLoading.setValue(progress); // Update the progress bar
+        }
+
+        @Override
+        protected void done() {
+            loadScreen("LoginScreen"); // Load the next screen when done
+        }
+    };
+    worker.execute(); // Start the worker thread
+    }  
+    
+    private void initData() {
+    // Initialize the energyTransactions list
+    energyTransactions = new LinkedList<>();
+    
+    // Create a table model with columns
+    DefaultTableModel model = new DefaultTableModel(
+        new Object[][]{}, // Empty data initially
+        new String[]{
+            "Transaction ID", "User ID", "Energy Units", "Token Type", 
+            "Payment Amount", "Energy Source", "Energy Type", "Location"
+        }
+    );
+
+    // Set the model to the JTable
+    tblEnergyTransactions.setModel(model);
+    
+    // Add some sample data for demonstration
+//    energyTransactions.add(new EnergyTransaction("T001", "U100", 50.0, "TokenA", 100.0, "Solar", "Type1", "Kathmandu"));
+//    energyTransactions.add(new EnergyTransaction("T002", "U101", 75.5, "TokenB", 150.0, "Wind", "Type2", "Pokhara"));
+//    energyTransactions.add(new EnergyTransaction("T003", "U102", 100.0, "TokenC", 200.0, "Hydro", "Type3", "Lalitpur"));
+
+    // Populate the table with sample data
+    for (EnergyTransaction energy : energyTransactions) {
+        model.addRow(new Object[]{
+            energy.getTransactionId(),
+            energy.getUserId(),
+            energy.getEnergyUnits(),
+            energy.getTokenType(),
+            energy.getPaymentAmount(),
+            energy.getEnergySource(),
+            energy.getEnergyType(),
+            energy.getLocation()
+        });
+    }
+}
+
+    
+    private void recordEnergyTransaction(EnergyTransaction energy) {
+        // Add the transaction to the list
+        energyTransactions.add(energy);
+
+        // Get the table model
+        DefaultTableModel model = (DefaultTableModel) tblEnergyTransactions.getModel();
+
+        // Add a new row with all energy transaction attributes
+        model.addRow(new Object[]{
+            energy.getTransactionId(),
+            energy.getUserId(),
+            energy.getEnergyUnits(),
+            energy.getTokenType(),
+            energy.getPaymentAmount(),
+            energy.getEnergySource(),
+            energy.getEnergyType(),
+            energy.getLocation()
+        });
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,11 +155,27 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEnergyTransactions = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
+        txtTransactionId = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtUserId = new javax.swing.JTextField();
+        txtEnergyUnits = new javax.swing.JTextField();
+        cmbTokenType = new javax.swing.JComboBox<>();
+        txtPaymentAmount = new javax.swing.JTextField();
+        cmbEnergySource = new javax.swing.JComboBox<>();
+        btnRecordTransaction = new javax.swing.JButton();
+        btnRemoveRecords = new javax.swing.JButton();
+        btnUpdateRecordTransaction = new javax.swing.JButton();
+        cmbEnergy = new javax.swing.JComboBox<>();
+        txtLocation = new javax.swing.JTextField();
+        btnClearFields = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         pnlLoginScreen = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -64,11 +184,12 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
         pnlLoadingScreen = new javax.swing.JPanel();
         prgsbarLoading = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -76,7 +197,10 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        pnlMainHomeScreen.setBackground(new java.awt.Color(132, 201, 229));
+        pnlMainHomeScreen.setBackground(new java.awt.Color(73, 127, 174));
+        pnlMainHomeScreen.setMaximumSize(new java.awt.Dimension(1024, 768));
+        pnlMainHomeScreen.setMinimumSize(new java.awt.Dimension(1024, 768));
+        pnlMainHomeScreen.setPreferredSize(new java.awt.Dimension(1024, 768));
         pnlMainHomeScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogOut.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -87,94 +211,251 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 btnLogOutActionPerformed(evt);
             }
         });
-        pnlMainHomeScreen.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 140, 50));
+        pnlMainHomeScreen.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 110, 50));
+
+        jTabbedPane1.setBackground(new java.awt.Color(73, 127, 174));
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(1024, 768));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(1024, 768));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1024, 768));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setBackground(new java.awt.Color(0, 255, 255));
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Renewable Energy");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 407, 77));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 407, 77));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Greener Future With");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 470, 77));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 470, 77));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Now with crypto, we're powering sustainable energy solutions for a decentralized future.");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 480, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 760, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/bc.PNG"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/backgr.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1210, 790));
 
         jTabbedPane1.addTab("Home", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel4.setBackground(new java.awt.Color(73, 127, 174));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("<html>\n    <h1>Whitepaper: EnerCoin - Proof of Energy <h1>\n    <be>Introduction</be>\n    <p>\n      Our native token is designed to revolutionize the way energy is utilized within blockchain networks. By implementing a Proof of Energy (PoE) consensus mechanism, we ensure that the energy usage within the network is optimized, reducing waste and increasing efficiency.\n    </p>\n    <br>\n    <be>What is Proof of Energy?</be>\n    <p>\n      Proof of Energy is a novel consensus mechanism that calculates the energy consumption of blockchain operations. Unlike traditional consensus mechanisms, PoE monitors the actual energy used during transactions and mining processes. This approach incentivizes nodes to maintain energy efficiency, thereby promoting sustainable blockchain practices.\n    </p>\n    <br>\n    <be>How PoE Works</be>\n    <p>\n      Nodes within the network are required to report their energy usage to the network’s smart contract. The smart contract then validates these reports and calculates the total energy consumption for the network. Rewards are distributed based on the energy efficiency of each node, incentivizing users to adopt energy-efficient practices.\n    </p>\n    <br>\n    <be>Implementation</be>\n      Our native token is built on a custom blockchain that integrates PoE. The blockchain uses smart contracts to monitor energy usage, and the tokenomics are designed to reward participants for their energy-efficient actions. The protocol will be tested and validated through pilot programs to ensure scalability and reliability.\n<br>\n  </div>\n</html>\n");
+        jLabel18.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/coin.PNG"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(252, 252, 252)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("WhitePaper", jPanel4);
+
+        jPanel2.setBackground(new java.awt.Color(73, 127, 174));
+
+        tblEnergyTransactions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "TransactionID", "UserID", "EnergyUnits", "TokenType", "PaymentAmount", "Energy", "EnergySource ", "Location"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEnergyTransactions);
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel20.setText("Energy Transactions");
+
+        txtTransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder("TransactionID"));
+        txtTransactionId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTransactionIdActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel22.setText("Add ENERGY TRANSACTIONS");
+
+        txtUserId.setBorder(javax.swing.BorderFactory.createTitledBorder("UserID"));
+
+        txtEnergyUnits.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergyUnits"));
+
+        cmbTokenType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ETH", "SOL", "BTC", "DOGE", "TRX", "SLC" }));
+        cmbTokenType.setBorder(javax.swing.BorderFactory.createTitledBorder("TokenType"));
+        cmbTokenType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTokenTypeActionPerformed(evt);
+            }
+        });
+
+        txtPaymentAmount.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment Amount"));
+        txtPaymentAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPaymentAmountActionPerformed(evt);
+            }
+        });
+
+        cmbEnergySource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solar", "Windmill", "Hydropower", "Nuclear Plant", "Coal Plant", " " }));
+        cmbEnergySource.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergySource"));
+
+        btnRecordTransaction.setText("Add");
+        btnRecordTransaction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecordTransactionActionPerformed(evt);
+            }
+        });
+
+        btnRemoveRecords.setText("Delete");
+
+        btnUpdateRecordTransaction.setText("Update");
+
+        cmbEnergy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electricity", "Solar Energy", "Wind Energy", "Hydropower", "Geothermal Energy", "Biomass Energy", "Nuclear Power (General)", "Fusion Reactor", "Fission Reactor", "Tidal Energy" }));
+        cmbEnergy.setBorder(javax.swing.BorderFactory.createTitledBorder("Energy"));
+
+        txtLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
+        txtLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocationActionPerformed(evt);
+            }
+        });
+
+        btnClearFields.setText("Clear");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(96, 96, 96))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(btnRecordTransaction)
+                        .addGap(189, 189, 189)
+                        .addComponent(btnRemoveRecords)
+                        .addGap(193, 193, 193)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnClearFields)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdateRecordTransaction)
+                        .addGap(108, 108, 108))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dashboard", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(73, 127, 174));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1290, Short.MAX_VALUE)
+            .addGap(0, 1020, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
+            .addGap(0, 685, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("About Us", jPanel3);
+        jTabbedPane1.addTab("EnergySupply List", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1290, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
-        );
+        pnlMainHomeScreen.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1020, 720));
 
-        jTabbedPane1.addTab("WhitePaper", jPanel4);
+        pnlLoginScreen.setBackground(new java.awt.Color(6, 72, 83));
+        pnlLoginScreen.setMaximumSize(new java.awt.Dimension(1024, 768));
+        pnlLoginScreen.setMinimumSize(new java.awt.Dimension(1024, 768));
+        pnlLoginScreen.setPreferredSize(new java.awt.Dimension(1024, 768));
 
-        pnlMainHomeScreen.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1290, 880));
-
-        pnlLoginScreen.setBackground(new java.awt.Color(204, 255, 255));
-
-        jPanel5.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel5.setBackground(new java.awt.Color(2, 136, 138));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 255)));
         jPanel5.setForeground(new java.awt.Color(0, 102, 102));
 
@@ -182,7 +463,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/ethereum.png"))); // NOI18N
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/logo.PNG"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/capture.PNG"))); // NOI18N
         jLabel12.setText("jLabel12");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -195,37 +476,37 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(40, 40, 40))
+                .addGap(15, 15, 15))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(141, 141, 141)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9))
-                .addGap(63, 63, 63)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(67, 67, 67)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel11)
-                .addGap(0, 181, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(114, 218, 211));
         jLabel14.setText("Login with your credentials ");
-
-        jLabel15.setText("jLabel15");
 
         jTextField1.setText("Username");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -234,52 +515,64 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(114, 218, 211));
         jLabel16.setText("Username");
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(114, 218, 211));
         jLabel17.setText("Password");
 
         jTextField2.setText("Passsword");
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(114, 218, 211));
+        jLabel27.setText("Forgot your Password? Register");
 
         javax.swing.GroupLayout pnlLoginScreenLayout = new javax.swing.GroupLayout(pnlLoginScreen);
         pnlLoginScreen.setLayout(pnlLoginScreenLayout);
         pnlLoginScreenLayout.setHorizontalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
-                        .addComponent(jLabel14)
-                        .addGap(134, 134, 134))
                     .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(jLabel14))
+                    .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13))
+                    .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                         .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13))
-                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                                .addGap(215, 215, 215)
-                                .addComponent(jLabel15))
-                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addGap(39, 39, 39))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
+                                .addComponent(btnLogin)
+                                .addGap(134, 134, 134)))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         pnlLoginScreenLayout.setVerticalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel13)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel15)
-                .addGap(92, 92, 92)
+                .addGap(137, 137, 137)
                 .addComponent(jLabel14)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel16)
@@ -289,15 +582,26 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogin)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(1025, 768));
+        setMinimumSize(new java.awt.Dimension(1025, 768));
+        setPreferredSize(new java.awt.Dimension(1025, 768));
 
-        pnlLoadingScreen.setBackground(new java.awt.Color(3, 70, 79));
+        pnlLoadingScreen.setBackground(new java.awt.Color(2, 136, 138));
+        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1024, 768));
+        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1024, 768));
+        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1024, 787));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/logo.PNG"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/capture.PNG"))); // NOI18N
         jLabel2.setText("jLabel2");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -307,47 +611,45 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Loading");
+        jLabel5.setText("Loading...");
 
         javax.swing.GroupLayout pnlLoadingScreenLayout = new javax.swing.GroupLayout(pnlLoadingScreen);
         pnlLoadingScreen.setLayout(pnlLoadingScreenLayout);
         pnlLoadingScreenLayout.setHorizontalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
+                .addGap(587, 587, 587)
+                .addComponent(jLabel1)
+                .addGap(147, 437, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(340, 340, 340))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(268, 268, 268))))
-            .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
-                .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
-                        .addGap(380, 380, 380)
+                        .addGap(293, 293, 293))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(308, 308, 308))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
                         .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(147, 147, 147))
-                            .addComponent(prgsbarLoading, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 293, Short.MAX_VALUE))
+                            .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(prgsbarLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(274, 274, 274))))
         );
         pnlLoadingScreenLayout.setVerticalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(prgsbarLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addGap(21, 21, 21)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
                 .addGap(194, 194, 194))
         );
@@ -375,6 +677,49 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        loadScreen("MainScreen");// TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtTransactionIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransactionIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTransactionIdActionPerformed
+
+    private void cmbTokenTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTokenTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTokenTypeActionPerformed
+
+    private void txtPaymentAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPaymentAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPaymentAmountActionPerformed
+
+    private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocationActionPerformed
+
+    private void btnRecordTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordTransactionActionPerformed
+        try {
+        if (ValidationUtil.isInputValid(txtTransactionId, txtUserId, txtEnergyUnits, txtPaymentAmount, txtLocation)) {
+            EnergyTransaction transaction = new EnergyTransaction(
+                txtTransactionId.getText(),
+                txtUserId.getText(),
+                Double.parseDouble(txtEnergyUnits.getText()),
+                cmbTokenType.getSelectedItem().toString(),
+                Double.parseDouble(txtPaymentAmount.getText()),
+                cmbEnergySource.getSelectedItem().toString(),
+                cmbEnergy.getSelectedItem().toString(),
+                txtLocation.getText()
+            );
+            recordEnergyTransaction(transaction);
+            JOptionPane.showMessageDialog(this, "Transaction Added Successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Input! Please fill all fields.");
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Error: Invalid number format for Energy Units or Payment Amount.");
+    }
+    }//GEN-LAST:event_btnRecordTransactionActionPerformed
     
     
     /**
@@ -414,17 +759,29 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClearFields;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRecordTransaction;
+    private javax.swing.JButton btnRemoveRecords;
+    private javax.swing.JButton btnUpdateRecordTransaction;
+    private javax.swing.JComboBox<String> cmbEnergy;
+    private javax.swing.JComboBox<String> cmbEnergySource;
+    private javax.swing.JComboBox<String> cmbTokenType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -439,12 +796,17 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel pnlLoadingScreen;
     private javax.swing.JPanel pnlLoginScreen;
     private javax.swing.JPanel pnlMainHomeScreen;
     private javax.swing.JProgressBar prgsbarLoading;
+    private javax.swing.JTable tblEnergyTransactions;
+    private javax.swing.JTextField txtEnergyUnits;
+    private javax.swing.JTextField txtLocation;
+    private javax.swing.JTextField txtPaymentAmount;
+    private javax.swing.JTextField txtTransactionId;
+    private javax.swing.JTextField txtUserId;
     // End of variables declaration//GEN-END:variables
 }
