@@ -28,40 +28,6 @@ public class ValidationUtil {
     private static boolean isNullOrEmpty(String value) {
         return value == null || value.trim().isEmpty();
     }
-
-    /**
-     * Validates if all input fields are filled and the energy units and payment amount are valid numbers.
-     * @param transactionIdField the transaction ID field to validate.
-     * @param userIdField the user ID field to validate.
-     * @param energyUnitsField the energy units field to validate.
-     * @param paymentAmountField the payment amount field to validate.
-     * @param locationField the location field to validate.
-     * @return true if all fields are valid, false otherwise.
-     */
-    public static boolean isInputValid(JTextField transactionIdField, 
-                                       JTextField userIdField, 
-                                       JTextField energyUnitsField, 
-                                       JTextField paymentAmountField, 
-                                       JTextField locationField) {
-        // Check for empty fields
-        if (transactionIdField.getText().trim().isEmpty() ||
-            userIdField.getText().trim().isEmpty() ||
-            energyUnitsField.getText().trim().isEmpty() ||
-            paymentAmountField.getText().trim().isEmpty() ||
-            locationField.getText().trim().isEmpty()) {
-            return false; // If any field is empty, return false
-        }
-
-        // Check if energy units and payment amount are valid numbers
-        try {
-            Double.parseDouble(energyUnitsField.getText().trim());
-            Double.parseDouble(paymentAmountField.getText().trim());
-        } catch (NumberFormatException e) {
-            return false; // If parsing fails, return false
-        }
-
-        return true; // All fields are valid
-    }
     
     public static boolean isValidNumericValue(String value, JLabel lblError) {
         if (isNullOrEmpty(value)) {

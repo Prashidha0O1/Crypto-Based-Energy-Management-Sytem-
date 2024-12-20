@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="pnlMainHomeScreen">
       <Properties>
@@ -137,7 +137,17 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="0" y="-10" width="1030" height="780"/>
+                      <AbsoluteConstraints x="0" y="-90" width="1030" height="780"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jButton1"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="220" y="290" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -162,9 +172,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel18" min="-2" pref="763" max="-2" attributes="0"/>
+                          <Component id="lblEnerCoinWhitepaper" min="-2" pref="763" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" pref="239" max="-2" attributes="0"/>
+                          <Component id="lblChillGuy" min="-2" pref="239" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -172,19 +182,19 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel18" min="-2" pref="746" max="-2" attributes="0"/>
+                          <Component id="lblEnerCoinWhitepaper" min="-2" pref="746" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" pref="226" max="-2" attributes="0"/>
+                          <Component id="lblChillGuy" min="-2" pref="226" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class="javax.swing.JLabel" name="lblEnerCoinWhitepaper">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
@@ -193,7 +203,7 @@
                     <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="lblChillGuy">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/energymanagement/resources/coin.PNG"/>
@@ -646,15 +656,47 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1020" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="586" max="-2" attributes="0"/>
+                          <EmptySpace pref="106" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="685" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;section style=&quot;display: flex; justify-content: center; padding: 2rem; background-color: #f9fafc;&quot;&gt;&#xa;  &lt;div style=&quot;display: flex; max-width: 1200px; flex-direction: row; gap: 1.5rem; align-items: center;&quot;&gt;&#xa;    &lt;!-- Left Image Section --&gt;&#xa;    &lt;div style=&quot;flex: 1; position: relative;&quot;&gt;&#xa;      &lt;h2&gt;Learn More&lt;/h2&gt;&#xa;    &lt;/div&gt;&#xa;    &lt;!-- Right Details Section --&gt;&#xa;    &lt;div style=&quot;flex: 2; display: flex; gap: 1.5rem; flex-wrap: wrap;&quot;&gt;&#xa;      &lt;!-- Detail Cards --&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;&#x26a1;&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Projects Explore&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #d1f2eb; border: 1px solid #27ae60; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83d\udcca&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Statistics Data&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf0d&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Zero Emission&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83d\udd0b&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Clean Energy&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf3e&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Hectare Area&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf2c&#xfe0f;&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Megawatt Capacity&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;    &lt;/div&gt;&#xa;  &lt;/div&gt;&#xa;&lt;/section&gt;&#xa;&#xa;&#xa;&#xa;&lt;/html&gt;" containsInvalidXMLChars="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/energymanagement/resources/stats.PNG"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>
@@ -680,13 +722,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlLeftLoginScreen" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace pref="150" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblForgotPassword" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -698,22 +740,18 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtFieldLOginUsername" max="32767" attributes="0"/>
                                       <Component id="pwdFldLogin" alignment="0" pref="325" max="32767" attributes="0"/>
-                                      <Component id="jLabel16" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                                      <Component id="lblUsername" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel14" max="32767" attributes="0"/>
+                                      <Component id="lblLoginWithCredentials" max="32767" attributes="0"/>
                                       <Component id="lblLoginError" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -728,32 +766,30 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                  <Component id="lblLoginWithCredentials" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblLoginError" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtFieldLOginUsername" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pwdFldLogin" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblForgotPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlLeftLoginScreen" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel5">
+        <Container class="javax.swing.JPanel" name="pnlLeftLoginScreen">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="8a" green="88" red="2" type="rgb"/>
@@ -845,9 +881,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel13">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="lblLoginWithCredentials">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -866,7 +900,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldLOginUsernameActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel16">
+        <Component class="javax.swing.JLabel" name="lblUsername">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -877,7 +911,7 @@
             <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel17">
+        <Component class="javax.swing.JLabel" name="lblPassword">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -901,7 +935,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel27">
+        <Component class="javax.swing.JLabel" name="lblForgotPassword">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -983,25 +1017,20 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="587" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="147" pref="437" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="340" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="303" max="-2" attributes="0"/>
+                          <Component id="lblLogoEnerChain" min="-2" pref="303" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="391" max="-2" attributes="0"/>
+                              <Component id="lblEnerChain" min="-2" pref="391" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="lblLoading" min="-2" pref="83" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="prgsbarLoading" min="-2" pref="354" max="-2" attributes="0"/>
                               </Group>
@@ -1016,16 +1045,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="165" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLogoEnerChain" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEnerChain" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="prgsbarLoading" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                  <Component id="lblLoading" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1033,9 +1060,7 @@
       <SubComponents>
         <Component class="javax.swing.JProgressBar" name="prgsbarLoading">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblLogoEnerChain">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/energymanagement/resources/capture.PNG"/>
@@ -1043,7 +1068,7 @@
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblEnerChain">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="36" style="0"/>
@@ -1055,7 +1080,7 @@
             <Property name="text" type="java.lang.String" value="EnerChain"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lblLoading">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
