@@ -10,6 +10,9 @@ public class EnergyTransaction {
     private String energyType;     // Type of energy (e.g., Electricity, Heat)
     private String location;       // Location of transaction
     
+    public EnergyTransaction(){
+    
+    }
     // Constructor
     public EnergyTransaction(String transactionId, String userId, double energyUnits, 
                              String tokenType, double paymentAmount, String energySource, 
