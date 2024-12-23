@@ -5,6 +5,7 @@
 package com.energymanagement.views;
 import com.energymanagement.model.EnergyTransaction;
 import com.energymanagement.util.ValidationUtil;
+import java.awt.Color;
 import java.util.LinkedList;
 import javax.swing.*;
 import java.awt.Image;
@@ -164,7 +165,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         tblEnergyTransactions = new javax.swing.JTable();
         lblTableHeading = new javax.swing.JLabel();
         txtTfldransactionId = new javax.swing.JTextField();
-        lblFormHeader = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
         txtfldUserId = new javax.swing.JTextField();
         txtfldEnergyUnits = new javax.swing.JTextField();
         cmbTokenType = new javax.swing.JComboBox<>();
@@ -176,7 +177,11 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         cmbEnergy = new javax.swing.JComboBox<>();
         txtfldLocation = new javax.swing.JTextField();
         btnClearForm = new javax.swing.JButton();
-        lblError = new javax.swing.JLabel();
+        lblTransactionErrorMsg = new javax.swing.JLabel();
+        lblUserIDErrorMsg = new javax.swing.JLabel();
+        lblErrorEnergyUnits = new javax.swing.JLabel();
+        lblErrorPaymentAmount = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnlAboutUs = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -189,8 +194,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         lblLoginWithCredentials = new javax.swing.JLabel();
         txtFieldLOginUsername = new javax.swing.JTextField();
-        lblUsername = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         lblForgotPassword = new javax.swing.JLabel();
         lblLoginError = new javax.swing.JLabel();
@@ -200,7 +203,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         prgsbarLoading = new javax.swing.JProgressBar();
         lblLogoEnerChain = new javax.swing.JLabel();
         lblEnerChain = new javax.swing.JLabel();
-        lblLoading = new javax.swing.JLabel();
 
         pnlMainHomeScreen.setBackground(new java.awt.Color(2, 136, 138));
         pnlMainHomeScreen.setMaximumSize(new java.awt.Dimension(1024, 768));
@@ -228,20 +230,20 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         lblSlogan2.setBackground(new java.awt.Color(0, 255, 255));
         lblSlogan2.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
-        lblSlogan2.setForeground(new java.awt.Color(0, 255, 255));
+        lblSlogan2.setForeground(new java.awt.Color(0, 0, 153));
         lblSlogan2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSlogan2.setText("Renewable Energy");
-        pnlHomeScreen.add(lblSlogan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 480, 70));
+        pnlHomeScreen.add(lblSlogan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 480, 70));
 
         lblSlogan1.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
-        lblSlogan1.setForeground(new java.awt.Color(51, 255, 255));
+        lblSlogan1.setForeground(new java.awt.Color(0, 0, 153));
         lblSlogan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSlogan1.setText("Greener Future With");
-        pnlHomeScreen.add(lblSlogan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 570, 77));
+        pnlHomeScreen.add(lblSlogan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 570, 77));
 
-        lblHomeSubSlogan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblHomeSubSlogan.setText("Now with crypto, we're powering sustainable energy solutions for a decentralized future.");
-        pnlHomeScreen.add(lblHomeSubSlogan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 760, -1));
+        lblHomeSubSlogan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblHomeSubSlogan.setText("<html>\nNow with crypto, we're powering sustainable energy solutions </br>\nfor a decentralized future.\n\n</hml>");
+        pnlHomeScreen.add(lblHomeSubSlogan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 480, -1));
 
         lblBackgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/backgr.png"))); // NOI18N
         pnlHomeScreen.add(lblBackgroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 1030, 780));
@@ -251,7 +253,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         tabbedPaneMain.addTab("Home", pnlHomeScreen);
 
-        pnlWhitepaperScreen.setBackground(new java.awt.Color(73, 127, 174));
+        pnlWhitepaperScreen.setBackground(new java.awt.Color(2, 136, 138));
 
         lblEnerCoinWhitepaper.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblEnerCoinWhitepaper.setText("<html>\n    <h1>Whitepaper: EnerCoin - Proof of Energy <h1>\n    <be>Introduction</be>\n    <p>\n      Our native token is designed to revolutionize the way energy is utilized within blockchain networks. By implementing a Proof of Energy (PoE) consensus mechanism, we ensure that the energy usage within the network is optimized, reducing waste and increasing efficiency.\n    </p>\n    <br>\n    <be>What is Proof of Energy?</be>\n    <p>\n      Proof of Energy is a novel consensus mechanism that calculates the energy consumption of blockchain operations. Unlike traditional consensus mechanisms, PoE monitors the actual energy used during transactions and mining processes. This approach incentivizes nodes to maintain energy efficiency, thereby promoting sustainable blockchain practices.\n    </p>\n    <br>\n    <be>How PoE Works</be>\n    <p>\n      Nodes within the network are required to report their energy usage to the network’s smart contract. The smart contract then validates these reports and calculates the total energy consumption for the network. Rewards are distributed based on the energy efficiency of each node, incentivizing users to adopt energy-efficient practices.\n    </p>\n    <br>\n    <be>Implementation</be>\n      Our native token is built on a custom blockchain that integrates PoE. The blockchain uses smart contracts to monitor energy usage, and the tokenomics are designed to reward participants for their energy-efficient actions. The protocol will be tested and validated through pilot programs to ensure scalability and reliability.\n<br>\n  </div>\n</html>\n");
@@ -264,9 +266,9 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         pnlWhitepaperScreenLayout.setHorizontalGroup(
             pnlWhitepaperScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlWhitepaperScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(19, 19, 19)
+                .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblChillGuy, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -276,14 +278,14 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlWhitepaperScreenLayout.createSequentialGroup()
-                .addGap(252, 252, 252)
+                .addGap(247, 247, 247)
                 .addComponent(lblChillGuy, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPaneMain.addTab("WhitePaper", pnlWhitepaperScreen);
 
-        pnlDashboard.setBackground(new java.awt.Color(73, 127, 174));
+        pnlDashboard.setBackground(new java.awt.Color(2, 136, 138));
 
         tblEnergyTransactions.setBackground(new java.awt.Color(0, 255, 255));
         tblEnergyTransactions.setModel(new javax.swing.table.DefaultTableModel(
@@ -308,15 +310,15 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblTableHeading.setText("Energy Supply Transactions");
 
         txtTfldransactionId.setBackground(new java.awt.Color(51, 204, 255));
-        txtTfldransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder("TransactionID"));
+        txtTfldransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TransactionID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         txtTfldransactionId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTfldransactionIdActionPerformed(evt);
             }
         });
 
-        lblFormHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblFormHeader.setText("ENERGY SUPPLY TRANSACTIONS");
+        lblError.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblError.setText("ENERGY SUPPLY TRANSACTIONS");
 
         txtfldUserId.setBackground(new java.awt.Color(51, 204, 255));
         txtfldUserId.setBorder(javax.swing.BorderFactory.createTitledBorder("UserID"));
@@ -347,6 +349,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         btnRecordTransaction.setBackground(new java.awt.Color(51, 204, 255));
         btnRecordTransaction.setText("Add");
+        btnRecordTransaction.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnRecordTransaction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecordTransactionActionPerformed(evt);
@@ -390,56 +393,77 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
+        lblErrorEnergyUnits.setText("jLabel4");
+
+        lblErrorPaymentAmount.setText("jLabel4");
+
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout pnlDashboardLayout = new javax.swing.GroupLayout(pnlDashboard);
         pnlDashboard.setLayout(pnlDashboardLayout);
         pnlDashboardLayout.setHorizontalGroup(
             pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDashboardLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDashboardLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148))
+                    .addGroup(pnlDashboardLayout.createSequentialGroup()
                         .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlDashboardLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(lblErrorPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDashboardLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
                                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTfldransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(79, 79, 79)
+                                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                        .addComponent(txtTfldransactionId, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lblTransactionErrorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)
                                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtfldUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(96, 96, 96))
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(btnRecordTransaction)
-                        .addGap(189, 189, 189)
-                        .addComponent(btnRemoveRecords)
-                        .addGap(193, 193, 193)))
+                                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtfldUserId)
+                                        .addComponent(cmbEnergySource, 0, 155, Short.MAX_VALUE))
+                                    .addComponent(lblUserIDErrorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfldEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
+                        .addComponent(btnUpdateRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDashboardLayout.createSequentialGroup()
+                        .addComponent(lblErrorEnergyUnits)
+                        .addContainerGap())
                     .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addComponent(btnClearForm)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnUpdateRecords)
-                        .addGap(108, 108, 108))))
+                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDashboardLayout.createSequentialGroup()
+                                .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
+                                .addComponent(txtfldEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)))
+                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtfldLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(cmbTokenType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(64, 64, 64))))
             .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(pnlDashboardLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTableHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFormHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlDashboardLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         pnlDashboardLayout.setVerticalGroup(
             pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,65 +473,67 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addComponent(lblFormHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                        .addComponent(lblError)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(lblError)
+                .addGap(39, 39, 39)
                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTfldransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTransactionErrorMsg)
+                        .addComponent(lblUserIDErrorMsg))
+                    .addComponent(lblErrorEnergyUnits))
+                .addGap(53, 53, 53)
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                            .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26))
+                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtfldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDashboardLayout.createSequentialGroup()
+                        .addComponent(lblErrorPaymentAmount)
+                        .addGap(22, 22, 22)
                         .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 39, Short.MAX_VALUE))
+                            .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         tabbedPaneMain.addTab("Dashboard", pnlDashboard);
 
-        pnlAboutUs.setBackground(new java.awt.Color(73, 127, 174));
+        pnlAboutUs.setBackground(new java.awt.Color(2, 136, 138));
 
         jLabel1.setText("<html>\n<section style=\"display: flex; justify-content: center; padding: 2rem; background-color: #f9fafc;\">\n  <div style=\"display: flex; max-width: 1200px; flex-direction: row; gap: 1.5rem; align-items: center;\">\n    <!-- Left Image Section -->\n    <div style=\"flex: 1; position: relative;\">\n      <h2>Learn More</h2>\n    </div>\n    <!-- Right Details Section -->\n    <div style=\"flex: 2; display: flex; gap: 1.5rem; flex-wrap: wrap;\">\n      <!-- Detail Cards -->\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">⚡</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Projects Explore</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #d1f2eb; border: 1px solid #27ae60; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">📊</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Statistics Data</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌍</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Zero Emission</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🔋</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Clean Energy</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌾</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Hectare Area</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌬️</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Megawatt Capacity</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n</html>");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/stats.PNG"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/about us image.PNG"))); // NOI18N
 
         javax.swing.GroupLayout pnlAboutUsLayout = new javax.swing.GroupLayout(pnlAboutUs);
         pnlAboutUs.setLayout(pnlAboutUsLayout);
         pnlAboutUsLayout.setHorizontalGroup(
             pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAboutUsLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(88, 88, 88))
         );
         pnlAboutUsLayout.setVerticalGroup(
             pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAboutUsLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAboutUsLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                .addGap(29, 29, 29)
+                .addGroup(pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         tabbedPaneMain.addTab("About Us", pnlAboutUs);
@@ -575,20 +601,14 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblLoginWithCredentials.setForeground(new java.awt.Color(114, 218, 211));
         lblLoginWithCredentials.setText("Login with your credentials ");
 
-        txtFieldLOginUsername.setText("Username");
+        txtFieldLOginUsername.setBackground(new java.awt.Color(0, 204, 204));
+        txtFieldLOginUsername.setForeground(new java.awt.Color(255, 255, 255));
+        txtFieldLOginUsername.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         txtFieldLOginUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldLOginUsernameActionPerformed(evt);
             }
         });
-
-        lblUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUsername.setForeground(new java.awt.Color(114, 218, 211));
-        lblUsername.setText("Username");
-
-        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(114, 218, 211));
-        lblPassword.setText("Password");
 
         btnLogin.setBackground(new java.awt.Color(0, 204, 204));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -603,7 +623,11 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblForgotPassword.setForeground(new java.awt.Color(114, 218, 211));
         lblForgotPassword.setText("Forgot your Password? Register");
 
-        pwdFldLogin.setText("jPasswordField1");
+        lblLoginError.setForeground(new java.awt.Color(255, 51, 51));
+
+        pwdFldLogin.setBackground(new java.awt.Color(0, 204, 204));
+        pwdFldLogin.setForeground(new java.awt.Color(255, 255, 255));
+        pwdFldLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP)));
 
         jRadioButton1.setForeground(new java.awt.Color(0, 255, 255));
         jRadioButton1.setText("Remember this computer.");
@@ -615,50 +639,43 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
                 .addComponent(pnlLeftLoginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblForgotPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(80, 80, 80))
                     .addGroup(pnlLoginScreenLayout.createSequentialGroup()
                         .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPassword)
-                                    .addComponent(txtFieldLOginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwdFldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
                                 .addGap(165, 165, 165)
                                 .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblLoginWithCredentials, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblLoginError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(63, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblForgotPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(80, 80, 80))))
+                                    .addComponent(lblLoginError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(pnlLoginScreenLayout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pwdFldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFieldLOginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(63, Short.MAX_VALUE))))
         );
         pnlLoginScreenLayout.setVerticalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addGap(143, 143, 143)
                 .addComponent(lblLoginWithCredentials)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addComponent(lblLoginError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUsername)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFieldLOginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(lblPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pwdFldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(txtFieldLOginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(pwdFldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblForgotPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jRadioButton1)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(pnlLeftLoginScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -683,42 +700,30 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblEnerChain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEnerChain.setText("EnerChain");
 
-        lblLoading.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblLoading.setForeground(new java.awt.Color(255, 255, 255));
-        lblLoading.setText("Loading...");
-
         javax.swing.GroupLayout pnlLoadingScreenLayout = new javax.swing.GroupLayout(pnlLoadingScreen);
         pnlLoadingScreen.setLayout(pnlLoadingScreenLayout);
         pnlLoadingScreenLayout.setHorizontalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(prgsbarLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                .addContainerGap(340, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                        .addComponent(lblLogoEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(308, 308, 308))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                        .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlLoadingScreenLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(lblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(prgsbarLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(293, 293, 293))))
+                        .addComponent(lblLogoEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(358, 358, 358))))
         );
         pnlLoadingScreenLayout.setVerticalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+                .addContainerGap(200, Short.MAX_VALUE)
                 .addComponent(lblLogoEnerChain)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addComponent(lblEnerChain)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(prgsbarLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLoading)
-                .addGap(239, 239, 239))
+                .addGap(220, 220, 220)
+                .addComponent(prgsbarLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -731,7 +736,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();
@@ -781,26 +786,121 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfldLocationActionPerformed
 
+    
+   private void highlightInvalidField(JTextField textField, String title, Color color) {
+    // Set a new border with the provided title and color
+    textField.setBorder(
+        javax.swing.BorderFactory.createTitledBorder(
+            javax.swing.BorderFactory.createLineBorder(color, 2), // Border with desired color
+            title,                                               // Title for the border
+            javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+            javax.swing.border.TitledBorder.DEFAULT_POSITION,
+            new java.awt.Font("Segoe UI", 1, 12),                // Font settings
+            color                                                // Font color matches border color
+        )
+    );
+
+    // Prevent layout issues
+    textField.revalidate();
+    textField.repaint();
+}
+
+
+
+
+    private void resetFieldBorderWithTitle(JTextField textField, String title) {
+    // Reset the border to its default state with the title
+    textField.setBorder(
+        javax.swing.BorderFactory.createTitledBorder(
+            javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1), // Default gray border
+            title,                                                   // Title for the border
+            javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+            javax.swing.border.TitledBorder.DEFAULT_POSITION,
+            new java.awt.Font("Segoe UI", 1, 12),                    // Font settings
+            Color.BLACK                                              // Default font color
+        )
+    );
+
+    // Prevent layout issues
+    textField.revalidate();
+    textField.repaint();
+}
+
+
+    
+    
     private void btnRecordTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordTransactionActionPerformed
-        String transactionId = txtTfldransactionId.getText();
-        String userId = txtfldUserId.getText();
-        String energyUnits = txtfldEnergyUnits.getText();
-        String paymentAmount = txtfldPaymentAmount.getText();
-        String location = txtfldLocation.getText();
-        String tokenType = cmbTokenType.getSelectedItem().toString();
-        String energySource = cmbEnergySource.getSelectedItem().toString();
-        String energyType = cmbEnergy.getSelectedItem().toString();
 
-        // Validate the inputs using the ValidationUtil methods
-        if (ValidationUtil.isValidTransactionId(transactionId, lblError) && 
-            ValidationUtil.isValidUserId(userId, lblError) &&
-            ValidationUtil.isValidNumericValue(energyUnits, lblError) &&
-            ValidationUtil.isValidNumericValue(paymentAmount, lblError) &&
-            ValidationUtil.isValidLocation(location, lblError) &&
-            ValidationUtil.validatePaymentMethod(tokenType, lblError) &&
-            ValidationUtil.isValidEnergySource(energySource, lblError) &&
-            ValidationUtil.isValidEnergyType(energyType, lblError)) {
+    // Get input values
+    String transactionId = txtTfldransactionId.getText();
+    String userId = txtfldUserId.getText();
+    String energyUnits = txtfldEnergyUnits.getText();
+    String paymentAmount = txtfldPaymentAmount.getText();
+    String location = txtfldLocation.getText();
+    String tokenType = cmbTokenType.getSelectedItem().toString();
+    String energySource = cmbEnergySource.getSelectedItem().toString();
+    String energyType = cmbEnergy.getSelectedItem().toString();
 
+    // Reset error messages
+    lblTransactionErrorMsg.setText("");
+    lblUserIDErrorMsg.setText("");
+    lblErrorEnergyUnits.setText("");
+    lblErrorPaymentAmount.setText("");
+    jLabel4.setText("");
+
+
+    // Validation flags
+    boolean isValid = true;
+    
+    
+    // Validate inputs
+    if (!ValidationUtil.isValidTransactionId(transactionId, lblTransactionErrorMsg)) {
+        isValid = false;
+        highlightInvalidField(txtTfldransactionId,"TransactionID", Color.RED);
+
+    }else {
+        resetFieldBorderWithTitle(txtTfldransactionId, "TransactionID");
+    }
+    if (!ValidationUtil.isValidUserId(userId, lblUserIDErrorMsg)) {
+        isValid = false;
+        highlightInvalidField(txtfldUserId,"UserID", Color.RED);
+    }else {
+        resetFieldBorderWithTitle(txtfldUserId, "UserID");
+    }
+    
+    if (!ValidationUtil.isValidNumericValue(energyUnits, lblErrorEnergyUnits)) {
+        isValid = false;
+        highlightInvalidField(txtfldEnergyUnits, "EnergyUnits", Color.RED);
+    }else {
+        resetFieldBorderWithTitle(txtfldEnergyUnits, "EnergyUnits");
+    }
+    
+    if (!ValidationUtil.isValidNumericValue(paymentAmount, lblErrorPaymentAmount)) {
+        isValid = false;
+        highlightInvalidField(txtfldPaymentAmount, "PaymentAmount", Color.RED);
+    }else {
+        resetFieldBorderWithTitle(txtfldPaymentAmount, "PaymentAmount");
+    }
+    
+    if (!ValidationUtil.isValidLocation(location, jLabel4)) {
+        isValid = false;
+        highlightInvalidField(txtfldLocation,"Location",Color.RED);
+    }else {
+        resetFieldBorderWithTitle(txtfldLocation, "Location");
+    }
+//    if (!ValidationUtil.validatePaymentMethod(tokenType, lblErrorTokenType)) {
+//        isValid = false;
+//    }
+//    if (!ValidationUtil.isValidEnergySource(energySource, lblErrorEnergySource)) {
+//        isValid = false;s
+//    }
+//    if (!ValidationUtil.isValidEnergyType(energyType, lblErrorEnergyType)) {
+//        isValid = false;
+//    }
+
+    // If all validations pass
+    if (isValid) {
+        try {
             String transactionIdValue = transactionId;
             String userIdValue = userId;
             double energyUnitsValue = Double.parseDouble(energyUnits);
@@ -823,10 +923,14 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
             // Show success message
             JOptionPane.showMessageDialog(this, "Transaction data has been successfully added.", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            // Show error message
-            JOptionPane.showMessageDialog(this, "Please enter valid data for all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error parsing numeric values. Please check the inputs.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "Please correct the highlighted errors and try again.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+    }
+
 
     }//GEN-LAST:event_btnRecordTransactionActionPerformed
 
@@ -865,9 +969,9 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             String energySource = cmbEnergySource.getSelectedItem().toString();
             String energyType = cmbEnergy.getSelectedItem().toString();
 
-            if (ValidationUtil.isValidTransactionId(transactionId, lblError) &&
-                ValidationUtil.isValidUserId(userId, lblError) &&
-                ValidationUtil.isValidNumericValue(energyUnits, lblError) &&
+            if (ValidationUtil.isValidTransactionId(transactionId, lblTransactionErrorMsg) &&
+                ValidationUtil.isValidUserId(userId, lblUserIDErrorMsg) &&
+                ValidationUtil.isValidNumericValue(energyUnits, lblErrorEnergyUnits) &&
                 ValidationUtil.isValidNumericValue(paymentAmount, lblError) &&
                 ValidationUtil.isValidLocation(location, lblError) &&
                 ValidationUtil.validatePaymentMethod(tokenType, lblError) &&
@@ -975,6 +1079,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -983,18 +1088,18 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblEnerChain;
     private javax.swing.JLabel lblEnerCoinWhitepaper;
     private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblErrorEnergyUnits;
+    private javax.swing.JLabel lblErrorPaymentAmount;
     private javax.swing.JLabel lblForgotPassword;
-    private javax.swing.JLabel lblFormHeader;
     private javax.swing.JLabel lblHomeSubSlogan;
-    private javax.swing.JLabel lblLoading;
     private javax.swing.JLabel lblLoginError;
     private javax.swing.JLabel lblLoginWithCredentials;
     private javax.swing.JLabel lblLogoEnerChain;
-    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSlogan1;
     private javax.swing.JLabel lblSlogan2;
     private javax.swing.JLabel lblTableHeading;
-    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblTransactionErrorMsg;
+    private javax.swing.JLabel lblUserIDErrorMsg;
     private javax.swing.JPanel pnlAboutUs;
     private javax.swing.JPanel pnlDashboard;
     private javax.swing.JPanel pnlHomeScreen;

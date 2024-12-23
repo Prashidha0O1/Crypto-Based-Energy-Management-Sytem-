@@ -55,7 +55,7 @@ public class ValidationUtil {
      * @return true if the User ID is valid, false otherwise
      */
     public static boolean isValidUserId(String userId, JLabel lblError) {
-        if (userId == null || userId.trim().isEmpty()) {
+        if (isNullOrEmpty(userId)) {
             lblError.setText("User ID cannot be empty.");
             lblError.setForeground(Color.WHITE);
             return false;
