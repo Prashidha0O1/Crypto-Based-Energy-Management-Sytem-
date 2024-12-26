@@ -1,4 +1,4 @@
-package com.energymanagement.util;
+package com.energymanagement.controller;
 
 /**
  *
@@ -61,8 +61,8 @@ public class ValidationUtil {
             return false;
         }
         if (!userId.startsWith("0x") || !ALPHA_NUMERIC_PATTERN.matcher(userId.substring(2)).matches() || userId.length() != 10) {
-            lblError.setText("User ID must start with '0x', be alphanumeric, and exactly 10 characters.");
-            lblError.setForeground(Color.WHITE);
+            lblError.setText("User ID must start with '0x', be alphanumeric, exactly 10 characters.");
+            lblError.setForeground(Color.RED);
             return false;
         }
         lblError.setText(""); // Clear error message if valid
@@ -83,7 +83,7 @@ public class ValidationUtil {
             return false;
         }
         if (!ALPHA_NUMERIC_PATTERN.matcher(transactionId).matches() || transactionId.length() != 5) {
-            lblError.setText("Transaction ID must be alphanumeric and exactly 5 characters.");
+            lblError.setText("Transaction ID must be alphanumeric, exactly 5 character.");
             lblError.setForeground(Color.RED);
             return false;
         }
