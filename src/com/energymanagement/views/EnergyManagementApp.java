@@ -4,7 +4,7 @@
  */
 package com.energymanagement.views;
 
-import com.energymanagement.model.EnergyTransaction;
+import com.energymanagement.model.EnergyTransactionModel;
 import com.energymanagement.controller.ValidationUtil;
 import java.awt.Color;
 import java.util.LinkedList;
@@ -13,7 +13,10 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
+import com.energymanagement.controller.algorithms.InsertionSort;
+import com.energymanagement.controller.algorithms.MergeSort;
+import com.energymanagement.controller.algorithms.SelectionSort;
+import com.energymanagement.controller.algorithms.BinarySearch;
 /**
  *
  * @author Prashidha
@@ -21,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class EnergyManagementApp extends javax.swing.JFrame {
 
     private java.awt.CardLayout cardLayout;
-    private List<EnergyTransaction> energyTransactions;
+    private List<EnergyTransactionModel> energyTransactions;
 
     /**
      * Creates new form NewJFrame
@@ -119,12 +122,12 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         tblEnergyTransactions.setModel(model);
 
         // Add some sample data for demonstration
-        energyTransactions.add(new EnergyTransaction("T001", "U100", 50.0, "TokenA", 100.0, "Solar", "Type1", "Kathmandu"));
-        energyTransactions.add(new EnergyTransaction("T002", "U101", 75.5, "TokenB", 150.0, "Wind", "Type2", "Pokhara"));
-        energyTransactions.add(new EnergyTransaction("T003", "U102", 100.0, "TokenC", 200.0, "Hydro", "Type3", "Lalitpur"));
+        energyTransactions.add(new EnergyTransactionModel("T001", "U100", 50.0, "TokenA", 100.0, "Solar", "Type1", "Kathmandu"));
+        energyTransactions.add(new EnergyTransactionModel("T002", "U101", 75.5, "TokenB", 150.0, "Wind", "Type2", "Pokhara"));
+        energyTransactions.add(new EnergyTransactionModel("T003", "U102", 100.0, "TokenC", 200.0, "Hydro", "Type3", "Lalitpur"));
 
         // Populate the table with sample data
-        for (EnergyTransaction energy : energyTransactions) {
+        for (EnergyTransactionModel energy : energyTransactions) {
             model.addRow(new Object[]{
                 energy.getTransactionId(),
                 energy.getUserId(),
@@ -138,7 +141,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         }
     }
 
-    private void recordEnergyTransaction(EnergyTransaction energy) {
+    private void recordEnergyTransaction(EnergyTransactionModel energy) {
         // Add the transaction to the list
         energyTransactions.add(energy);
 
@@ -201,16 +204,21 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblLocationErrror = new javax.swing.JLabel();
         cmbEnergy = new javax.swing.JComboBox<>();
         lblMessage = new javax.swing.JLabel();
+        btnSort = new javax.swing.JButton();
+        cmbSortingBy = new javax.swing.JComboBox<>();
+        cmbSortingIn = new javax.swing.JComboBox<>();
+        txtFldSearchBar = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
         pnlAboutUs = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         pnlLoginScreen = new javax.swing.JPanel();
         pnlLeftLoginScreen = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblSolana = new javax.swing.JLabel();
+        lblEth = new javax.swing.JLabel();
+        lblLeftLOgo = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         lblLoginWithCredentials = new javax.swing.JLabel();
         txtFieldLOginUsername = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
@@ -289,7 +297,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             .addGroup(pnlWhitepaperScreenLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(58, 58, 58)
                 .addComponent(lblChillGuy, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -299,7 +307,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlWhitepaperScreenLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(164, 164, 164)
                 .addComponent(lblChillGuy, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -333,7 +341,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblTableHeading.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTableHeading.setText("Energy Supply Transactions");
 
-        txtTfldransactionId.setBackground(new java.awt.Color(51, 204, 255));
         txtTfldransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TransactionID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         txtTfldransactionId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,13 +348,10 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
-        txtfldUserId.setBackground(new java.awt.Color(51, 204, 255));
         txtfldUserId.setBorder(javax.swing.BorderFactory.createTitledBorder("UserID"));
 
-        txtfldEnergyUnits.setBackground(new java.awt.Color(51, 204, 255));
         txtfldEnergyUnits.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergyUnits"));
 
-        cmbTokenType.setBackground(new java.awt.Color(51, 204, 255));
         cmbTokenType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ETH", "SOL", "BTC", "DOGE", "TRX", "SLC" }));
         cmbTokenType.setBorder(javax.swing.BorderFactory.createTitledBorder("TokenType"));
         cmbTokenType.addActionListener(new java.awt.event.ActionListener() {
@@ -356,7 +360,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
-        txtfldPaymentAmount.setBackground(new java.awt.Color(51, 204, 255));
         txtfldPaymentAmount.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment Amount"));
         txtfldPaymentAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,7 +367,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
-        cmbEnergySource.setBackground(new java.awt.Color(51, 204, 255));
         cmbEnergySource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solar", "Windmill", "Hydropower", "Nuclear Plant", "Coal Plant", " " }));
         cmbEnergySource.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergySource"));
 
@@ -393,7 +395,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
-        txtfldLocation.setBackground(new java.awt.Color(51, 204, 255));
         txtfldLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
         txtfldLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,17 +410,37 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
 
-        cmbEnergy.setBackground(new java.awt.Color(51, 204, 255));
         cmbEnergy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical", "Thermal", "Mechanical ", "Nuclear" }));
         cmbEnergy.setBorder(javax.swing.BorderFactory.createTitledBorder("Energy"));
+
+        btnSort.setText("Sort");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
+
+        cmbSortingBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transaction ID", "Location", "Energy Units", " " }));
+
+        cmbSortingIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending", "Descending" }));
+        cmbSortingIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSortingInActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/search.png"))); // NOI18N
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDashboardLayout = new javax.swing.GroupLayout(pnlDashboard);
         pnlDashboard.setLayout(pnlDashboardLayout);
         pnlDashboardLayout.setHorizontalGroup(
             pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
             .addGroup(pnlDashboardLayout.createSequentialGroup()
                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDashboardLayout.createSequentialGroup()
@@ -479,23 +500,50 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTableHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlDashboardLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cmbSortingIn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92)
+                                .addComponent(cmbSortingBy, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100))
+                            .addGroup(pnlDashboardLayout.createSequentialGroup()
+                                .addGap(363, 363, 363)
+                                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))
+                        .addComponent(btnSort, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119)))
                 .addContainerGap())
             .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addGap(363, 363, 363)
-                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(pnlDashboardLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTableHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtFldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         pnlDashboardLayout.setVerticalGroup(
             pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblTableHeading)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTableHeading)
+                    .addComponent(txtFldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSortingIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbSortingBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSort)))
+                .addGap(18, 18, 18)
                 .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -550,7 +598,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAboutUsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
         );
@@ -566,7 +614,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         tabbedPaneMain.addTab("About Us", pnlAboutUs);
 
-        pnlMainHomeScreen.add(tabbedPaneMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1110, 720));
+        pnlMainHomeScreen.add(tabbedPaneMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1120, 720));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/logoo.png"))); // NOI18N
         pnlMainHomeScreen.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
@@ -580,16 +628,16 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         pnlLeftLoginScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 255)));
         pnlLeftLoginScreen.setForeground(new java.awt.Color(0, 102, 102));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/solana.png"))); // NOI18N
+        lblSolana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/solana.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/ethereum.png"))); // NOI18N
+        lblEth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/ethereum.png"))); // NOI18N
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/capture.PNG"))); // NOI18N
-        jLabel12.setText("jLabel12");
+        lblLeftLOgo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/capture.PNG"))); // NOI18N
+        lblLeftLOgo.setText("jLabel12");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("EnerChain");
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblName.setText("EnerChain");
 
         javax.swing.GroupLayout pnlLeftLoginScreenLayout = new javax.swing.GroupLayout(pnlLeftLoginScreen);
         pnlLeftLoginScreen.setLayout(pnlLeftLoginScreenLayout);
@@ -597,31 +645,31 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             pnlLeftLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLeftLoginScreenLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblEth, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
+                .addComponent(lblSolana)
                 .addGap(15, 15, 15))
             .addGroup(pnlLeftLoginScreenLayout.createSequentialGroup()
                 .addGap(141, 141, 141)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLeftLoginScreenLayout.createSequentialGroup()
                 .addContainerGap(113, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLeftLOgo, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95))
         );
         pnlLeftLoginScreenLayout.setVerticalGroup(
             pnlLeftLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLeftLoginScreenLayout.createSequentialGroup()
                 .addGroup(pnlLeftLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSolana, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlLeftLoginScreenLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(lblEth, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(67, 67, 67)
-                .addComponent(jLabel12)
+                .addComponent(lblLeftLOgo)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel11)
+                .addComponent(lblName)
                 .addContainerGap(278, Short.MAX_VALUE))
         );
 
@@ -804,7 +852,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         } // If credentials are correct, proceed to load the main screen
         else {
             lblLoginError.setText(""); // Clear any previous error messages
-            loadScreen("MainScreen"); // Load the main screen
+            loadScreen("MainScreen");
         }
 //    loadScreen("MainScreen");
 //        
@@ -825,7 +873,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private void txtfldLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfldLocationActionPerformed
-
+    
     private void highlightInvalidField(JTextField textField, String title, Color color) {
         // Set a new border with the provided title and color
         textField.setBorder(
@@ -877,6 +925,26 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     lblLocationErrror.setText("");
     lblMessage.setText("");
 }
+    
+    
+    private void loadListToTable(List<EnergyTransactionModel>energyTransactions){
+        DefaultTableModel model=(DefaultTableModel) tblEnergyTransactions.getModel();
+        
+        //clear existing rows if needed
+        model.setRowCount(0);
+        
+        //populate the table with drone data
+        energyTransactions.forEach(energy-> model.addRow(new Object[]{
+        energy.getTransactionId(),
+        energy.getUserId(),
+        energy.getEnergyUnits(),
+        energy.getTokenType(),
+        energy.getPaymentAmount(),
+        energy.getEnergySource(),
+        energy.getEnergyType(),
+        energy.getLocation()
+    }));
+    }
 
 
     private void btnRecordTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordTransactionActionPerformed
@@ -942,7 +1010,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             highlightInvalidField(txtfldLocation, "Location", Color.RED);
         } else {
             resetFieldBorderWithTitle(txtfldLocation, "Location");
-        }
+        } 
         // If all validations pass
         if (isValid) {
             try {
@@ -952,7 +1020,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 double paymentAmountValue = Double.parseDouble(paymentAmount);
 
                 // Create the EnergyTransaction object
-                EnergyTransaction transaction = new EnergyTransaction(
+                EnergyTransactionModel transaction = new EnergyTransactionModel(
                         transactionIdValue,
                         userIdValue,
                         energyUnitsValue,
@@ -1121,6 +1189,88 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRemoveRecordsActionPerformed
 
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        String selectedField = cmbSortingBy.getSelectedItem().toString();  // For selecting Transaction ID, EnergyUnits, or Location
+        String selectedOrder = cmbSortingIn.getSelectedItem().toString();  // For selecting Ascending/Descending
+
+    // Check if a valid field is selected
+    if (selectedField.equals("Select Field")) {
+        JOptionPane.showMessageDialog(this, "Please select a valid field for sorting (Transaction ID, Location, EnergyUnits).", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit if no field is selected
+    }
+
+    // Determine the sort order: true for descending, false for ascending
+    boolean isDesc = selectedOrder.equals("Descending");
+
+    // Initialize the sorted list variable
+    List<EnergyTransactionModel> sortedList = null;
+
+    // Sort the data based on the selected field
+    if (selectedField.equals("Energy Units")) {
+        // Use SelectionSort for Energy Units
+        SelectionSort selectionSort = new SelectionSort();
+        sortedList = selectionSort.sortByEnergyUnits(energyTransactions, isDesc);
+    } else if (selectedField.equals("Transaction ID")) {
+        // Use InsertionSort for Transaction ID
+        InsertionSort insertionSort = new InsertionSort();
+        sortedList = insertionSort.sortByTransactonID(energyTransactions, isDesc);
+    } else if (selectedField.equals("Location")) {
+        // Use MergeSort for Location
+        MergeSort mergeSort = new MergeSort();
+        sortedList = mergeSort.sortByLocation(energyTransactions, isDesc);
+    }
+
+    // Check if sortedList is not null before loading it into the table
+    if (sortedList != null && !sortedList.isEmpty()) {
+        loadListToTable(sortedList);
+    } else {
+        JOptionPane.showMessageDialog(this, "No data available for sorting.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_btnSortActionPerformed
+
+    private void cmbSortingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortingInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSortingInActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // Retrieve the Transaction ID from the text field
+    String searchId = txtFldSearchBar.getText().trim();
+
+    if (searchId.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+                "Please enter a Transaction ID to search.", 
+                "Input Error", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Sort the transaction list by Transaction ID to prepare for binary search
+    energyTransactions.sort((a, b) -> a.getTransactionId().compareTo(b.getTransactionId()));
+
+    // Perform binary search
+    BinarySearch binarySearch = new BinarySearch();
+    EnergyTransactionModel foundTransaction = binarySearch.searchTransactionById(energyTransactions, searchId);
+
+    if (foundTransaction != null) {
+        // Display transaction details in JOptionPane
+        JOptionPane.showMessageDialog(this,
+                "Transaction Details:\n" +
+                "Transaction ID: " + foundTransaction.getTransactionId() + "\n" +
+                "User ID: " + foundTransaction.getUserId() + "\n" +
+                "Energy Units: " + foundTransaction.getEnergyUnits() + "\n" +
+                "Payment Amount: " + foundTransaction.getPaymentAmount() + "\n" +
+                "Location: " + foundTransaction.getLocation() + "\n" +
+                "Token Type: " + foundTransaction.getTokenType() + "\n" +
+                "Energy Source: " + foundTransaction.getEnergySource() + "\n" +
+                "Energy Type: " + foundTransaction.getEnergyType(),
+                "Transaction Found", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        // Display a warning if the transaction ID is not found
+        JOptionPane.showMessageDialog(this,
+                "Transaction ID not found.", 
+                "Search Result", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1163,17 +1313,17 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRecordTransaction;
     private javax.swing.JButton btnRemoveRecords;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSort;
     private javax.swing.JButton btnUpdateRecords;
     private javax.swing.JComboBox<String> cmbEnergy;
     private javax.swing.JComboBox<String> cmbEnergySource;
+    private javax.swing.JComboBox<String> cmbSortingBy;
+    private javax.swing.JComboBox<String> cmbSortingIn;
     private javax.swing.JComboBox<String> cmbTokenType;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBackgroundImage;
@@ -1182,16 +1332,20 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblEnerCoinWhitepaper;
     private javax.swing.JLabel lblErrorEnergyUnits;
     private javax.swing.JLabel lblErrorPaymentAmount;
+    private javax.swing.JLabel lblEth;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblHomeSubSlogan;
+    private javax.swing.JLabel lblLeftLOgo;
     private javax.swing.JLabel lblLocationErrror;
     private javax.swing.JLabel lblLoginError;
     private javax.swing.JLabel lblLoginWithCredentials;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoEnerChain;
     private javax.swing.JLabel lblMessage;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSlogan1;
     private javax.swing.JLabel lblSlogan2;
+    private javax.swing.JLabel lblSolana;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStatusPercentage;
     private javax.swing.JLabel lblTableHeading;
@@ -1210,6 +1364,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedPaneMain;
     private javax.swing.JTable tblEnergyTransactions;
     private javax.swing.JTextField txtFieldLOginUsername;
+    private javax.swing.JTextField txtFldSearchBar;
     private javax.swing.JTextField txtTfldransactionId;
     private javax.swing.JTextField txtfldEnergyUnits;
     private javax.swing.JTextField txtfldLocation;

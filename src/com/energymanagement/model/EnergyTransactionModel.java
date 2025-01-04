@@ -1,6 +1,6 @@
 package com.energymanagement.model;
 
-public class EnergyTransaction {
+public class EnergyTransactionModel {
     private String transactionId;  // Unique identifier for transaction
     private String userId;         // User ID (starts with "0x" + 8-digit unique code)
     private double energyUnits;    // Energy Units being transacted
@@ -10,11 +10,11 @@ public class EnergyTransaction {
     private String energyType;     // Type of energy (e.g., Electricity, Heat)
     private String location;       // Location of transaction
     
-    public EnergyTransaction(){
+    public EnergyTransactionModel(){
     
     }
     // Constructor
-    public EnergyTransaction(String transactionId, String userId, double energyUnits, 
+    public EnergyTransactionModel(String transactionId, String userId, double energyUnits, 
                              String tokenType, double paymentAmount, String energySource, 
                              String energyType, String location) {
         this.transactionId = transactionId;
@@ -24,7 +24,6 @@ public class EnergyTransaction {
         this.paymentAmount = paymentAmount;
         this.energySource = energySource;
         this.energyType = energyType;
-        
         this.location = location;
     }
 
