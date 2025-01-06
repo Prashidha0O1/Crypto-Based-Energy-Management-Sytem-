@@ -61,7 +61,7 @@ public class ValidationUtil {
             return false;
         }
         if (!userId.startsWith("0x") || !ALPHA_NUMERIC_PATTERN.matcher(userId.substring(2)).matches() || userId.length() != 10) {
-            lblError.setText("User ID must start with '0x', be alphanumeric, exactly 10 characters.");
+            lblError.setText("Starts with '0x' be alphanumeric exactly 10 characters");
             lblError.setForeground(Color.RED);
             return false;
         }
@@ -83,7 +83,7 @@ public class ValidationUtil {
             return false;
         }
         if (!ALPHA_NUMERIC_PATTERN.matcher(transactionId).matches() || transactionId.length() != 5) {
-            lblError.setText("Transaction ID must be alphanumeric, exactly 5 character.");
+            lblError.setText("Must be alphanumeric, exactly 5 character.");
             lblError.setForeground(Color.RED);
             return false;
         }

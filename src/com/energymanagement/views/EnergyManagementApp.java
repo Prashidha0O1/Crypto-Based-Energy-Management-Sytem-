@@ -17,6 +17,8 @@ import com.energymanagement.controller.algorithms.InsertionSort;
 import com.energymanagement.controller.algorithms.MergeSort;
 import com.energymanagement.controller.algorithms.SelectionSort;
 import com.energymanagement.controller.algorithms.BinarySearch;
+import java.awt.Dimension;
+
 /**
  *
  * @author Prashidha
@@ -122,9 +124,16 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         tblEnergyTransactions.setModel(model);
 
         // Add some sample data for demonstration
-        energyTransactions.add(new EnergyTransactionModel("T001", "U100", 50.0, "TokenA", 100.0, "Solar", "Type1", "Kathmandu"));
-        energyTransactions.add(new EnergyTransactionModel("T002", "U101", 75.5, "TokenB", 150.0, "Wind", "Type2", "Pokhara"));
-        energyTransactions.add(new EnergyTransactionModel("T003", "U102", 100.0, "TokenC", 200.0, "Hydro", "Type3", "Lalitpur"));
+        energyTransactions.add(new EnergyTransactionModel("T0041", "0x34y5y6y7", 120.0, "TokenD", 250.0, "Geothermal", "Type4", "Bhaktapur"));
+        energyTransactions.add(new EnergyTransactionModel("T0051", "0x56z7z8z9", 80.5, "TokenE", 175.0, "Biomass", "Type5", "Chitwan"));
+        energyTransactions.add(new EnergyTransactionModel("T0061", "0x78a9a0a1", 65.0, "TokenF", 130.0, "Solar", "Type6", "Dharan"));
+        energyTransactions.add(new EnergyTransactionModel("T0071", "0x90b1b2b3", 150.0, "TokenG", 300.0, "Wind", "Type7", "Butwal"));
+        energyTransactions.add(new EnergyTransactionModel("T0081", "0x12c3c4c5", 90.0, "TokenH", 180.0, "Hydro", "Type8", "Biratnagar"));
+        energyTransactions.add(new EnergyTransactionModel("T0091", "0x34d5d6d7", 70.0, "TokenI", 140.0, "Geothermal", "Type9", "Janakpur"));
+        energyTransactions.add(new EnergyTransactionModel("T0101", "0x56e7e8e9", 110.5, "TokenJ", 220.0, "Biomass", "Type10", "Nepalgunj"));
+        energyTransactions.add(new EnergyTransactionModel("T0111", "0x78f9f0f1", 130.0, "TokenK", 260.0, "Solar", "Type11", "Hetauda"));
+        energyTransactions.add(new EnergyTransactionModel("T0121", "0x90g1g2g3", 95.0, "TokenL", 190.0, "Wind", "Type12", "Dhangadhi"));
+        energyTransactions.add(new EnergyTransactionModel("T0131", "0x12h3h4h5", 125.0, "TokenM", 250.0, "Hydro", "Type13", "Birgunj"));
 
         // Populate the table with sample data
         for (EnergyTransactionModel energy : energyTransactions) {
@@ -318,6 +327,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         pnlDashboard.setMaximumSize(new java.awt.Dimension(1125, 768));
         pnlDashboard.setMinimumSize(new java.awt.Dimension(1125, 768));
         pnlDashboard.setPreferredSize(new java.awt.Dimension(1125, 768));
+        pnlDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblEnergyTransactions.setBackground(new java.awt.Color(0, 255, 255));
         tblEnergyTransactions.setModel(new javax.swing.table.DefaultTableModel(
@@ -338,8 +348,11 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblEnergyTransactions);
 
+        pnlDashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1111, 156));
+
         lblTableHeading.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTableHeading.setText("Energy Supply Transactions");
+        pnlDashboard.add(lblTableHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 240, -1));
 
         txtTfldransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TransactionID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         txtTfldransactionId.addActionListener(new java.awt.event.ActionListener() {
@@ -347,10 +360,13 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 txtTfldransactionIdActionPerformed(evt);
             }
         });
+        pnlDashboard.add(txtTfldransactionId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 145, 61));
 
         txtfldUserId.setBorder(javax.swing.BorderFactory.createTitledBorder("UserID"));
+        pnlDashboard.add(txtfldUserId, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 145, 61));
 
         txtfldEnergyUnits.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergyUnits"));
+        pnlDashboard.add(txtfldEnergyUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 145, 61));
 
         cmbTokenType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ETH", "SOL", "BTC", "DOGE", "TRX", "SLC" }));
         cmbTokenType.setBorder(javax.swing.BorderFactory.createTitledBorder("TokenType"));
@@ -359,6 +375,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 cmbTokenTypeActionPerformed(evt);
             }
         });
+        pnlDashboard.add(cmbTokenType, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 145, 61));
 
         txtfldPaymentAmount.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment Amount"));
         txtfldPaymentAmount.addActionListener(new java.awt.event.ActionListener() {
@@ -366,11 +383,13 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 txtfldPaymentAmountActionPerformed(evt);
             }
         });
+        pnlDashboard.add(txtfldPaymentAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 145, 61));
 
         cmbEnergySource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solar", "Windmill", "Hydropower", "Nuclear Plant", "Coal Plant", " " }));
         cmbEnergySource.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergySource"));
+        pnlDashboard.add(cmbEnergySource, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 140, 60));
 
-        btnRecordTransaction.setBackground(new java.awt.Color(51, 204, 255));
+        btnRecordTransaction.setBackground(new java.awt.Color(255, 153, 255));
         btnRecordTransaction.setText("Add");
         btnRecordTransaction.setBorder(null);
         btnRecordTransaction.addActionListener(new java.awt.event.ActionListener() {
@@ -378,22 +397,25 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 btnRecordTransactionActionPerformed(evt);
             }
         });
+        pnlDashboard.add(btnRecordTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 110, 44));
 
-        btnRemoveRecords.setBackground(new java.awt.Color(51, 204, 255));
+        btnRemoveRecords.setBackground(new java.awt.Color(255, 153, 255));
         btnRemoveRecords.setText("Delete");
         btnRemoveRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveRecordsActionPerformed(evt);
             }
         });
+        pnlDashboard.add(btnRemoveRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 110, 48));
 
-        btnUpdateRecords.setBackground(new java.awt.Color(51, 204, 255));
+        btnUpdateRecords.setBackground(new java.awt.Color(255, 153, 255));
         btnUpdateRecords.setText("Update");
         btnUpdateRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateRecordsActionPerformed(evt);
             }
         });
+        pnlDashboard.add(btnUpdateRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, 110, 48));
 
         txtfldLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
         txtfldLocation.addActionListener(new java.awt.event.ActionListener() {
@@ -401,17 +423,26 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 txtfldLocationActionPerformed(evt);
             }
         });
+        pnlDashboard.add(txtfldLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 430, 145, 61));
 
-        btnClearForm.setBackground(new java.awt.Color(51, 204, 255));
+        btnClearForm.setBackground(new java.awt.Color(255, 153, 255));
         btnClearForm.setText("Clear");
         btnClearForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearFormActionPerformed(evt);
             }
         });
+        pnlDashboard.add(btnClearForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 46));
+        pnlDashboard.add(lblTransactionErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 260, 20));
+        pnlDashboard.add(lblUserIDErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 300, 10));
+        pnlDashboard.add(lblErrorEnergyUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 170, -1));
+        pnlDashboard.add(lblErrorPaymentAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 499, 181, -1));
+        pnlDashboard.add(lblLocationErrror, new org.netbeans.lib.awtextra.AbsoluteConstraints(954, 505, 134, -1));
 
         cmbEnergy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical", "Thermal", "Mechanical ", "Nuclear" }));
         cmbEnergy.setBorder(javax.swing.BorderFactory.createTitledBorder("Energy"));
+        pnlDashboard.add(cmbEnergy, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 145, 61));
+        pnlDashboard.add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 461, 14));
 
         btnSort.setText("Sort");
         btnSort.addActionListener(new java.awt.event.ActionListener() {
@@ -419,8 +450,15 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 btnSortActionPerformed(evt);
             }
         });
+        pnlDashboard.add(btnSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 106, 30));
 
         cmbSortingBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transaction ID", "Location", "Energy Units", " " }));
+        cmbSortingBy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSortingByActionPerformed(evt);
+            }
+        });
+        pnlDashboard.add(cmbSortingBy, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 133, 30));
 
         cmbSortingIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending", "Descending" }));
         cmbSortingIn.addActionListener(new java.awt.event.ActionListener() {
@@ -428,160 +466,16 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 cmbSortingInActionPerformed(evt);
             }
         });
+        pnlDashboard.add(cmbSortingIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 129, 30));
+        pnlDashboard.add(txtFldSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 195, 30));
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/search.png"))); // NOI18N
-        btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlDashboardLayout = new javax.swing.GroupLayout(pnlDashboard);
-        pnlDashboard.setLayout(pnlDashboardLayout);
-        pnlDashboardLayout.setHorizontalGroup(
-            pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblTransactionErrorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblUserIDErrorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                            .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                                    .addGap(52, 52, 52)
-                                                    .addComponent(lblErrorPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                                                    .addGap(46, 46, 46)
-                                                    .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(105, 105, 105)
-                                            .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                            .addGap(82, 82, 82)
-                                            .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(168, 168, 168)
-                                            .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(txtTfldransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtfldUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                                .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(102, 102, 102))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                                .addComponent(btnUpdateRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(128, 128, 128))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDashboardLayout.createSequentialGroup()
-                                .addComponent(lblErrorEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77))
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addComponent(txtfldEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblLocationErrror, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cmbSortingIn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(92, 92, 92)
-                                .addComponent(cmbSortingBy, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(100, 100, 100))
-                            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                                .addGap(363, 363, 363)
-                                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)))
-                        .addComponent(btnSort, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)))
-                .addContainerGap())
-            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTableHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 14, Short.MAX_VALUE))
-        );
-        pnlDashboardLayout.setVerticalGroup(
-            pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDashboardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTableHeading)
-                    .addComponent(txtFldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbSortingIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbSortingBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSort)))
-                .addGap(18, 18, 18)
-                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTfldransactionId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldEnergyUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTokenType, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTransactionErrorMsg)
-                            .addComponent(lblErrorEnergyUnits)))
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblUserIDErrorMsg)))
-                .addGap(67, 67, 67)
-                .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addComponent(txtfldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblLocationErrror)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlDashboardLayout.createSequentialGroup()
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbEnergySource, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldPaymentAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblErrorPaymentAmount)
-                        .addGap(41, 41, 41)
-                        .addGroup(pnlDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRecordTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRemoveRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdateRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-        );
+        pnlDashboard.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 70, 30));
 
         tabbedPaneMain.addTab("Dashboard", pnlDashboard);
 
@@ -854,8 +748,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             lblLoginError.setText(""); // Clear any previous error messages
             loadScreen("MainScreen");
         }
-//    loadScreen("MainScreen");
-//        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtTfldransactionIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTfldransactionIdActionPerformed
@@ -873,7 +765,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private void txtfldLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfldLocationActionPerformed
-    
+
     private void highlightInvalidField(JTextField textField, String title, Color color) {
         // Set a new border with the provided title and color
         textField.setBorder(
@@ -908,42 +800,100 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         textField.revalidate();
         textField.repaint();
     }
-    
-    private void resetAllUpdateFields() {
-    // Reset all field borders
-    resetFieldBorderWithTitle(txtTfldransactionId, "Transaction ID");
-    resetFieldBorderWithTitle(txtfldUserId, "User ID");
-    resetFieldBorderWithTitle(txtfldEnergyUnits, "Energy Units");
-    resetFieldBorderWithTitle(txtfldPaymentAmount, "Payment Amount");
-    resetFieldBorderWithTitle(txtfldLocation, "Location");
 
-    // Reset all error labels
-    lblTransactionErrorMsg.setText("");
-    lblUserIDErrorMsg.setText("");
-    lblErrorEnergyUnits.setText("");
-    lblErrorPaymentAmount.setText("");
-    lblLocationErrror.setText("");
-    lblMessage.setText("");
-}
-    
-    
-    private void loadListToTable(List<EnergyTransactionModel>energyTransactions){
-        DefaultTableModel model=(DefaultTableModel) tblEnergyTransactions.getModel();
-        
+    private void resetAllUpdateFields() {
+        // Reset all field borders
+        resetFieldBorderWithTitle(txtTfldransactionId, "Transaction ID");
+        resetFieldBorderWithTitle(txtfldUserId, "User ID");
+        resetFieldBorderWithTitle(txtfldEnergyUnits, "Energy Units");
+        resetFieldBorderWithTitle(txtfldPaymentAmount, "Payment Amount");
+        resetFieldBorderWithTitle(txtfldLocation, "Location");
+
+        // Reset all error labels
+        lblTransactionErrorMsg.setText("");
+        lblUserIDErrorMsg.setText("");
+        lblErrorEnergyUnits.setText("");
+        lblErrorPaymentAmount.setText("");
+        lblLocationErrror.setText("");
+        lblMessage.setText("");
+    }
+
+    private void loadListToTable(List<EnergyTransactionModel> energyTransactions) {
+        DefaultTableModel model = (DefaultTableModel) tblEnergyTransactions.getModel();
+
         //clear existing rows if needed
         model.setRowCount(0);
-        
+
         //populate the table with drone data
-        energyTransactions.forEach(energy-> model.addRow(new Object[]{
-        energy.getTransactionId(),
-        energy.getUserId(),
-        energy.getEnergyUnits(),
-        energy.getTokenType(),
-        energy.getPaymentAmount(),
-        energy.getEnergySource(),
-        energy.getEnergyType(),
-        energy.getLocation()
-    }));
+        energyTransactions.forEach(energy -> model.addRow(new Object[]{
+            energy.getTransactionId(),
+            energy.getUserId(),
+            energy.getEnergyUnits(),
+            energy.getTokenType(),
+            energy.getPaymentAmount(),
+            energy.getEnergySource(),
+            energy.getEnergyType(),
+            energy.getLocation()
+        }));
+    }
+
+    private void sortTransactionList(String selectedColumn) {
+        // Sorting based on selected column
+        SelectionSort selectionSort = new SelectionSort();
+        InsertionSort insertionSort = new InsertionSort();
+        MergeSort mergeSort = new MergeSort();
+
+        if (selectedColumn.equals("Energy Units")) {
+            boolean isDesc = false; // Set sorting order
+            energyTransactions = selectionSort.sortByEnergyUnits(energyTransactions, isDesc);
+        } else if (selectedColumn.equals("Transaction ID")) {
+            boolean isDesc = false;
+            energyTransactions = insertionSort.sortByTransactonID(energyTransactions, isDesc);
+        } else if (selectedColumn.equals("Location")) {
+            boolean isDesc = false;
+            energyTransactions = mergeSort.sortByLocation(energyTransactions, isDesc);
+        }
+    }
+
+    public void showSearchResult(EnergyTransactionModel result) {
+        if (result == null) {
+            JOptionPane.showMessageDialog(null, "No matching record found.", "Search Result", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Define column names
+        String[] columnNames = {"Transaction ID", "User ID", "Energy Units", "Payment Amount", "Location", "Token Type", "Energy Source", "Energy Type"};
+
+        // Populate table data
+        Object[][] data = {
+            {result.getTransactionId(), result.getUserId(), result.getEnergyUnits(),
+                result.getPaymentAmount(), result.getLocation(), result.getTokenType(),
+                result.getEnergySource(), result.getEnergyType()}
+        };
+
+        // Create table model and table
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
+        JTable table = new JTable(tableModel);
+
+        // Set column widths for better visibility
+        table.getColumnModel().getColumn(0).setPreferredWidth(100); // Transaction ID
+        table.getColumnModel().getColumn(1).setPreferredWidth(100); // User ID
+        table.getColumnModel().getColumn(2).setPreferredWidth(120); // Energy Units
+        table.getColumnModel().getColumn(3).setPreferredWidth(150); // Payment Amount
+        table.getColumnModel().getColumn(4).setPreferredWidth(120); // Location
+        table.getColumnModel().getColumn(5).setPreferredWidth(130); // Token Type
+        table.getColumnModel().getColumn(6).setPreferredWidth(150); // Energy Source
+        table.getColumnModel().getColumn(7).setPreferredWidth(150); // Energy Type
+
+        // Create a scroll pane and set its size
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(1200, 100));
+
+        // Show the table in a dialog box
+        JOptionPane optionPane = new JOptionPane(scrollPane, JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION);
+        JDialog dialog = optionPane.createDialog(null, "Search Result");
+        dialog.setSize(1200, 100);
+        dialog.setVisible(true);
     }
 
 
@@ -1010,7 +960,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             highlightInvalidField(txtfldLocation, "Location", Color.RED);
         } else {
             resetFieldBorderWithTitle(txtfldLocation, "Location");
-        } 
+        }
         // If all validations pass
         if (isValid) {
             try {
@@ -1068,79 +1018,78 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
     private void btnUpdateRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRecordsActionPerformed
         int selectedRow = tblEnergyTransactions.getSelectedRow();
-    if (selectedRow != -1) {
-        // Ask for confirmation
-        int res = JOptionPane.showConfirmDialog(this, 
-                "Do you want to update this transaction?", 
-                "Confirm Update", 
-                JOptionPane.YES_NO_OPTION);
+        if (selectedRow != -1) {
+            // Ask for confirmation
+            int res = JOptionPane.showConfirmDialog(this,
+                    "Do you want to update this transaction?",
+                    "Confirm Update",
+                    JOptionPane.YES_NO_OPTION);
 
-        if (res == JOptionPane.YES_OPTION) {
-            // Get input data
-            String transactionId = txtTfldransactionId.getText().trim();
-            String userId = txtfldUserId.getText().trim();
-            String energyUnits = txtfldEnergyUnits.getText().trim();
-            String paymentAmount = txtfldPaymentAmount.getText().trim();
-            String location = txtfldLocation.getText().trim();
-            String tokenType = cmbTokenType.getSelectedItem().toString();
-            String energySource = cmbEnergySource.getSelectedItem().toString();
-            String energyType = cmbEnergy.getSelectedItem().toString();
+            if (res == JOptionPane.YES_OPTION) {
+                // Get input data
+                String transactionId = txtTfldransactionId.getText().trim();
+                String userId = txtfldUserId.getText().trim();
+                String energyUnits = txtfldEnergyUnits.getText().trim();
+                String paymentAmount = txtfldPaymentAmount.getText().trim();
+                String location = txtfldLocation.getText().trim();
+                String tokenType = cmbTokenType.getSelectedItem().toString();
+                String energySource = cmbEnergySource.getSelectedItem().toString();
+                String energyType = cmbEnergy.getSelectedItem().toString();
 
-            // Reset all error labels and borders
-            resetAllUpdateFields();
+                // Reset all error labels and borders
+                resetAllUpdateFields();
 
-            boolean isValid = true;
+                boolean isValid = true;
 
-            // Validate inputs
-            if (!ValidationUtil.isValidTransactionId(transactionId, lblTransactionErrorMsg)) {
-                isValid = false;
-                highlightInvalidField(txtTfldransactionId, "Transaction ID", Color.RED);
+                // Validate inputs
+                if (!ValidationUtil.isValidTransactionId(transactionId, lblTransactionErrorMsg)) {
+                    isValid = false;
+                    highlightInvalidField(txtTfldransactionId, "Transaction ID", Color.RED);
+                }
+
+                if (!ValidationUtil.isValidUserId(userId, lblUserIDErrorMsg)) {
+                    isValid = false;
+                    highlightInvalidField(txtfldUserId, "User ID", Color.RED);
+                }
+
+                if (!ValidationUtil.isValidNumericValue(energyUnits, lblErrorEnergyUnits)) {
+                    isValid = false;
+                    highlightInvalidField(txtfldEnergyUnits, "Energy Units", Color.RED);
+                }
+
+                if (!ValidationUtil.isValidNumericValue(paymentAmount, lblErrorPaymentAmount)) {
+                    isValid = false;
+                    highlightInvalidField(txtfldPaymentAmount, "Payment Amount", Color.RED);
+                }
+
+                if (!ValidationUtil.isValidLocation(location, lblLocationErrror)) {
+                    isValid = false;
+                    highlightInvalidField(txtfldLocation, "Location", Color.RED);
+                }
+
+                if (isValid) {
+                    // Update transaction data in the table
+                    DefaultTableModel model = (DefaultTableModel) tblEnergyTransactions.getModel();
+                    model.setValueAt(transactionId, selectedRow, 0);
+                    model.setValueAt(userId, selectedRow, 1);
+                    model.setValueAt(energyUnits, selectedRow, 2);
+                    model.setValueAt(paymentAmount, selectedRow, 3);
+                    model.setValueAt(location, selectedRow, 4);
+                    model.setValueAt(tokenType, selectedRow, 5);
+                    model.setValueAt(energySource, selectedRow, 6);
+                    model.setValueAt(energyType, selectedRow, 7);
+
+                    lblMessage.setText("Transaction data updated successfully.");
+                    lblMessage.setForeground(Color.GREEN);
+                } else {
+                    lblMessage.setText("Invalid input. Please correct the highlighted fields.");
+                    lblMessage.setForeground(Color.RED);
+                }
             }
-
-            if (!ValidationUtil.isValidUserId(userId, lblUserIDErrorMsg)) {
-                isValid = false;
-                highlightInvalidField(txtfldUserId, "User ID", Color.RED);
-            }
-
-            if (!ValidationUtil.isValidNumericValue(energyUnits, lblErrorEnergyUnits)) {
-                isValid = false;
-                highlightInvalidField(txtfldEnergyUnits, "Energy Units", Color.RED);
-            }
-
-            if (!ValidationUtil.isValidNumericValue(paymentAmount, lblErrorPaymentAmount)) {
-                isValid = false;
-                highlightInvalidField(txtfldPaymentAmount, "Payment Amount", Color.RED);
-            }
-
-            if (!ValidationUtil.isValidLocation(location, lblLocationErrror)) {
-                isValid = false;
-                highlightInvalidField(txtfldLocation, "Location", Color.RED);
-            }
-
-
-            if (isValid) {
-                // Update transaction data in the table
-                DefaultTableModel model = (DefaultTableModel) tblEnergyTransactions.getModel();
-                model.setValueAt(transactionId, selectedRow, 0);
-                model.setValueAt(userId, selectedRow, 1);
-                model.setValueAt(energyUnits, selectedRow, 2);
-                model.setValueAt(paymentAmount, selectedRow, 3);
-                model.setValueAt(location, selectedRow, 4);
-                model.setValueAt(tokenType, selectedRow, 5);
-                model.setValueAt(energySource, selectedRow, 6);
-                model.setValueAt(energyType, selectedRow, 7);
-
-                lblMessage.setText("Transaction data updated successfully.");
-                lblMessage.setForeground(Color.GREEN);
-            } else {
-                lblMessage.setText("Invalid input. Please correct the highlighted fields.");
-                lblMessage.setForeground(Color.RED);
-            }
+        } else {
+            lblMessage.setText("No transaction selected. Please select a transaction to update.");
+            lblMessage.setForeground(Color.ORANGE);
         }
-    } else {
-        lblMessage.setText("No transaction selected. Please select a transaction to update.");
-        lblMessage.setForeground(Color.ORANGE);
-    }
     }//GEN-LAST:event_btnUpdateRecordsActionPerformed
 
     private void btnClearFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFormActionPerformed
@@ -1193,39 +1142,39 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         String selectedField = cmbSortingBy.getSelectedItem().toString();  // For selecting Transaction ID, EnergyUnits, or Location
         String selectedOrder = cmbSortingIn.getSelectedItem().toString();  // For selecting Ascending/Descending
 
-    // Check if a valid field is selected
-    if (selectedField.equals("Select Field")) {
-        JOptionPane.showMessageDialog(this, "Please select a valid field for sorting (Transaction ID, Location, EnergyUnits).", "Error", JOptionPane.ERROR_MESSAGE);
-        return; // Exit if no field is selected
-    }
+        // Check if a valid field is selected
+        if (selectedField.equals("Select Field")) {
+            JOptionPane.showMessageDialog(this, "Please select a valid field for sorting (Transaction ID, Location, EnergyUnits).", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit if no field is selected
+        }
 
-    // Determine the sort order: true for descending, false for ascending
-    boolean isDesc = selectedOrder.equals("Descending");
+        // Determine the sort order: true for descending, false for ascending
+        boolean isDesc = selectedOrder.equals("Descending");
 
-    // Initialize the sorted list variable
-    List<EnergyTransactionModel> sortedList = null;
+        // Initialize the sorted list variable
+        List<EnergyTransactionModel> sortedList = null;
 
-    // Sort the data based on the selected field
-    if (selectedField.equals("Energy Units")) {
-        // Use SelectionSort for Energy Units
-        SelectionSort selectionSort = new SelectionSort();
-        sortedList = selectionSort.sortByEnergyUnits(energyTransactions, isDesc);
-    } else if (selectedField.equals("Transaction ID")) {
-        // Use InsertionSort for Transaction ID
-        InsertionSort insertionSort = new InsertionSort();
-        sortedList = insertionSort.sortByTransactonID(energyTransactions, isDesc);
-    } else if (selectedField.equals("Location")) {
-        // Use MergeSort for Location
-        MergeSort mergeSort = new MergeSort();
-        sortedList = mergeSort.sortByLocation(energyTransactions, isDesc);
-    }
+        // Sort the data based on the selected field
+        if (selectedField.equals("Energy Units")) {
+            // Use SelectionSort for Energy Units
+            SelectionSort selectionSort = new SelectionSort();
+            sortedList = selectionSort.sortByEnergyUnits(energyTransactions, isDesc);
+        } else if (selectedField.equals("Transaction ID")) {
+            // Use InsertionSort for Transaction ID
+            InsertionSort insertionSort = new InsertionSort();
+            sortedList = insertionSort.sortByTransactonID(energyTransactions, isDesc);
+        } else if (selectedField.equals("Location")) {
+            // Use MergeSort for Location
+            MergeSort mergeSort = new MergeSort();
+            sortedList = mergeSort.sortByLocation(energyTransactions, isDesc);
+        }
 
-    // Check if sortedList is not null before loading it into the table
-    if (sortedList != null && !sortedList.isEmpty()) {
-        loadListToTable(sortedList);
-    } else {
-        JOptionPane.showMessageDialog(this, "No data available for sorting.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+        // Check if sortedList is not null before loading it into the table
+        if (sortedList != null && !sortedList.isEmpty()) {
+            loadListToTable(sortedList);
+        } else {
+            JOptionPane.showMessageDialog(this, "No data available for sorting.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSortActionPerformed
 
     private void cmbSortingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortingInActionPerformed
@@ -1233,43 +1182,31 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbSortingInActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // Retrieve the Transaction ID from the text field
-    String searchId = txtFldSearchBar.getText().trim();
+        // Get user inputs
+        String searchValue = txtFldSearchBar.getText().trim();
+        String selectedColumn = cmbSortingBy.getSelectedItem().toString();
 
-    if (searchId.isEmpty()) {
-        JOptionPane.showMessageDialog(this, 
-                "Please enter a Transaction ID to search.", 
-                "Input Error", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        // Validate input
+        if (searchValue.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter a value to search.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // Sort the transaction list by Transaction ID to prepare for binary search
-    energyTransactions.sort((a, b) -> a.getTransactionId().compareTo(b.getTransactionId()));
+        BinarySearch binarySearch = new BinarySearch();
 
-    // Perform binary search
-    BinarySearch binarySearch = new BinarySearch();
-    EnergyTransactionModel foundTransaction = binarySearch.searchTransactionById(energyTransactions, searchId);
+        // Sort the transaction list based on the selected column
+        sortTransactionList(selectedColumn);
 
-    if (foundTransaction != null) {
-        // Display transaction details in JOptionPane
-        JOptionPane.showMessageDialog(this,
-                "Transaction Details:\n" +
-                "Transaction ID: " + foundTransaction.getTransactionId() + "\n" +
-                "User ID: " + foundTransaction.getUserId() + "\n" +
-                "Energy Units: " + foundTransaction.getEnergyUnits() + "\n" +
-                "Payment Amount: " + foundTransaction.getPaymentAmount() + "\n" +
-                "Location: " + foundTransaction.getLocation() + "\n" +
-                "Token Type: " + foundTransaction.getTokenType() + "\n" +
-                "Energy Source: " + foundTransaction.getEnergySource() + "\n" +
-                "Energy Type: " + foundTransaction.getEnergyType(),
-                "Transaction Found", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        // Display a warning if the transaction ID is not found
-        JOptionPane.showMessageDialog(this,
-                "Transaction ID not found.", 
-                "Search Result", JOptionPane.WARNING_MESSAGE);
-    }
+        // Perform binary search
+        EnergyTransactionModel result = binarySearch.searchByField(searchValue, selectedColumn, energyTransactions, 0, energyTransactions.size() - 1);
+
+        // Display result
+        showSearchResult(result);
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void cmbSortingByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortingByActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSortingByActionPerformed
 
     /**
      * @param args the command line arguments
