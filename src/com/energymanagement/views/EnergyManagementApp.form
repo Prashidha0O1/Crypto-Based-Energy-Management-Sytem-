@@ -175,8 +175,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="lblEnerCoinWhitepaper" min="-2" pref="707" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="lblEnerCoinWhitepaper" min="-2" pref="759" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblChillGuy" min="-2" pref="239" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -204,6 +204,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;    &lt;h1&gt;Whitepaper: EnerCoin - Proof of Energy &lt;h1&gt;&#xa;    &lt;be&gt;Introduction&lt;/be&gt;&#xa;    &lt;p&gt;&#xa;      Our native token is designed to revolutionize the way energy is utilized within blockchain networks. By implementing a Proof of Energy (PoE) consensus mechanism, we ensure that the energy usage within the network is optimized, reducing waste and increasing efficiency.&#xa;    &lt;/p&gt;&#xa;    &lt;br&gt;&#xa;    &lt;be&gt;What is Proof of Energy?&lt;/be&gt;&#xa;    &lt;p&gt;&#xa;      Proof of Energy is a novel consensus mechanism that calculates the energy consumption of blockchain operations. Unlike traditional consensus mechanisms, PoE monitors the actual energy used during transactions and mining processes. This approach incentivizes nodes to maintain energy efficiency, thereby promoting sustainable blockchain practices.&#xa;    &lt;/p&gt;&#xa;    &lt;br&gt;&#xa;    &lt;be&gt;How PoE Works&lt;/be&gt;&#xa;    &lt;p&gt;&#xa;      Nodes within the network are required to report their energy usage to the network&#x2019;s smart contract. The smart contract then validates these reports and calculates the total energy consumption for the network. Rewards are distributed based on the energy efficiency of each node, incentivizing users to adopt energy-efficient practices.&#xa;    &lt;/p&gt;&#xa;    &lt;br&gt;&#xa;    &lt;be&gt;Implementation&lt;/be&gt;&#xa;      Our native token is built on a custom blockchain that integrates PoE. The blockchain uses smart contracts to monitor energy usage, and the tokenomics are designed to reward participants for their energy-efficient actions. The protocol will be tested and validated through pilot programs to ensure scalability and reliability.&#xa;&lt;br&gt;&#xa;  &lt;/div&gt;&#xa;&lt;/html&gt;&#xa;"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[218, 347]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblChillGuy">
@@ -218,7 +221,7 @@
             <Container class="javax.swing.JPanel" name="pnlDashboard">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="8a" green="88" red="2" type="rgb"/>
+                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[1125, 768]"/>
@@ -257,7 +260,7 @@
                     <Component class="javax.swing.JTable" name="tblEnergyTransactions">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="0" type="rgb"/>
+                          <Color blue="ff" green="99" red="99" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="4">
@@ -315,6 +318,9 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                        </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -334,7 +340,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="18" y="6" width="240" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="240" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -460,7 +466,7 @@
                 <Component class="javax.swing.JButton" name="btnRecordTransaction">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -472,14 +478,14 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="80" y="580" width="110" height="44"/>
+                      <AbsoluteConstraints x="70" y="580" width="110" height="44"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnRemoveRecords">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
@@ -488,14 +494,14 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="380" y="580" width="110" height="48"/>
+                      <AbsoluteConstraints x="370" y="580" width="110" height="48"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnUpdateRecords">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Update"/>
                   </Properties>
@@ -528,7 +534,7 @@
                 <Component class="javax.swing.JButton" name="btnClearForm">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
@@ -542,6 +548,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblTransactionErrorMsg">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="10" y="320" width="260" height="20"/>
@@ -549,6 +560,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblUserIDErrorMsg">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="330" y="330" width="300" height="10"/>
@@ -556,6 +572,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblErrorEnergyUnits">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="670" y="320" width="170" height="-1"/>
@@ -563,6 +584,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblErrorPaymentAmount">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="52" y="499" width="181" height="-1"/>
@@ -570,9 +596,14 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblLocationErrror">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="954" y="505" width="134" height="-1"/>
+                      <AbsoluteConstraints x="880" y="500" width="190" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -602,9 +633,14 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMessage">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="410" y="220" width="461" height="14"/>
+                      <AbsoluteConstraints x="350" y="214" width="461" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -708,10 +744,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="586" max="-2" attributes="0"/>
-                          <EmptySpace pref="193" max="32767" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="270" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="lblAboutusImage" min="-2" pref="586" max="-2" attributes="0"/>
+                          <EmptySpace pref="186" max="32767" attributes="0"/>
+                          <Component id="lblLearnMore" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -720,8 +756,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" pref="571" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="525" max="-2" attributes="0"/>
+                              <Component id="lblLearnMore" min="-2" pref="525" max="-2" attributes="0"/>
+                              <Component id="lblAboutusImage" min="-2" pref="571" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="85" max="32767" attributes="0"/>
                       </Group>
@@ -729,12 +765,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="lblLearnMore">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;section style=&quot;display: flex; justify-content: center; padding: 2rem; background-color: #f9fafc;&quot;&gt;&#xa;  &lt;div style=&quot;display: flex; max-width: 1200px; flex-direction: row; gap: 1.5rem; align-items: center;&quot;&gt;&#xa;    &lt;!-- Left Image Section --&gt;&#xa;    &lt;div style=&quot;flex: 1; position: relative;&quot;&gt;&#xa;      &lt;h2&gt;Learn More&lt;/h2&gt;&#xa;    &lt;/div&gt;&#xa;    &lt;!-- Right Details Section --&gt;&#xa;    &lt;div style=&quot;flex: 2; display: flex; gap: 1.5rem; flex-wrap: wrap;&quot;&gt;&#xa;      &lt;!-- Detail Cards --&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;&#x26a1;&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Projects Explore&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #d1f2eb; border: 1px solid #27ae60; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83d\udcca&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Statistics Data&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf0d&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Zero Emission&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83d\udd0b&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Clean Energy&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf3e&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Hectare Area&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;      &lt;div style=&quot;background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;&quot;&gt;&#xa;        &lt;div style=&quot;font-size: 2rem; margin-bottom: 0.5rem;&quot;&gt;\ud83c\udf2c&#xfe0f;&lt;/div&gt;&#xa;        &lt;h3 style=&quot;font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;&quot;&gt;Megawatt Capacity&lt;/h3&gt;&#xa;        &lt;p style=&quot;font-size: 0.9rem; color: #7f8c8d;&quot;&gt;We convert wind turbine to 100% wind energy&lt;/p&gt;&#xa;      &lt;/div&gt;&#xa;    &lt;/div&gt;&#xa;  &lt;/div&gt;&#xa;&lt;/section&gt;&#xa;&#xa;&#xa;&#xa;&lt;/html&gt;" containsInvalidXMLChars="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="lblAboutusImage">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/energymanagement/resources/about us image.PNG"/>
@@ -1089,12 +1125,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="prgsbarLoading" alignment="1" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="418" max="32767" attributes="0"/>
+                  <EmptySpace pref="377" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblLogoEnerChain" min="-2" pref="303" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="lblStatus" min="-2" pref="176" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="395" max="-2" attributes="0"/>
@@ -1102,8 +1134,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblLogoEnerChain" min="-2" pref="303" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="lblEnerChain" min="-2" pref="391" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

@@ -57,11 +57,11 @@ public class ValidationUtil {
     public static boolean isValidUserId(String userId, JLabel lblError) {
         if (isNullOrEmpty(userId)) {
             lblError.setText("User ID cannot be empty.");
-            lblError.setForeground(Color.WHITE);
+            lblError.setForeground(Color.RED);
             return false;
         }
         if (!userId.startsWith("0x") || !ALPHA_NUMERIC_PATTERN.matcher(userId.substring(2)).matches() || userId.length() != 10) {
-            lblError.setText("Starts with '0x' be alphanumeric exactly 10 characters");
+            lblError.setText("Starts with '0x' be alphanumeric exactly 10 character");
             lblError.setForeground(Color.RED);
             return false;
         }

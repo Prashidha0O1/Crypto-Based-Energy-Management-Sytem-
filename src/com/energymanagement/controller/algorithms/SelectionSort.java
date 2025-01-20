@@ -39,7 +39,6 @@ public class SelectionSort {
         // Clear the energySortList and add all elements from the input list
         this.energySortList.clear();
         this.energySortList.addAll(energyTransactions);
-
         // Validate input: the list cannot be null or empty
         if (energySortList == null || energySortList.isEmpty()) {
             throw new IllegalArgumentException("EnergyTransaction list cannot be null or empty.");

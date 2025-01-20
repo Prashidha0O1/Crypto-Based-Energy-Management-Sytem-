@@ -42,9 +42,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         initData();
     }
 
-    private void loadScreen(String screenName) {
-        cardLayout.show(getContentPane(), screenName);
-    }
+
 
     private void initializeLayout() {
         cardLayout = new java.awt.CardLayout();
@@ -58,7 +56,11 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         // Start with the loading screen
         loadScreen("LoadingScreen");
     }
-
+    
+    private void loadScreen(String screenName) {
+        cardLayout.show(getContentPane(), screenName);
+    }
+    
     private void startProgress() {
         SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {  // Use String instead of Void
             @Override
@@ -219,8 +221,8 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         txtFldSearchBar = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         pnlAboutUs = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblLearnMore = new javax.swing.JLabel();
+        lblAboutusImage = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         pnlLoginScreen = new javax.swing.JPanel();
         pnlLeftLoginScreen = new javax.swing.JPanel();
@@ -296,6 +298,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblEnerCoinWhitepaper.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblEnerCoinWhitepaper.setText("<html>\n    <h1>Whitepaper: EnerCoin - Proof of Energy <h1>\n    <be>Introduction</be>\n    <p>\n      Our native token is designed to revolutionize the way energy is utilized within blockchain networks. By implementing a Proof of Energy (PoE) consensus mechanism, we ensure that the energy usage within the network is optimized, reducing waste and increasing efficiency.\n    </p>\n    <br>\n    <be>What is Proof of Energy?</be>\n    <p>\n      Proof of Energy is a novel consensus mechanism that calculates the energy consumption of blockchain operations. Unlike traditional consensus mechanisms, PoE monitors the actual energy used during transactions and mining processes. This approach incentivizes nodes to maintain energy efficiency, thereby promoting sustainable blockchain practices.\n    </p>\n    <br>\n    <be>How PoE Works</be>\n    <p>\n      Nodes within the network are required to report their energy usage to the network’s smart contract. The smart contract then validates these reports and calculates the total energy consumption for the network. Rewards are distributed based on the energy efficiency of each node, incentivizing users to adopt energy-efficient practices.\n    </p>\n    <br>\n    <be>Implementation</be>\n      Our native token is built on a custom blockchain that integrates PoE. The blockchain uses smart contracts to monitor energy usage, and the tokenomics are designed to reward participants for their energy-efficient actions. The protocol will be tested and validated through pilot programs to ensure scalability and reliability.\n<br>\n  </div>\n</html>\n");
         lblEnerCoinWhitepaper.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblEnerCoinWhitepaper.setMaximumSize(new java.awt.Dimension(218, 347));
 
         lblChillGuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/chill.png"))); // NOI18N
 
@@ -305,8 +308,8 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             pnlWhitepaperScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlWhitepaperScreenLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addComponent(lblEnerCoinWhitepaper, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblChillGuy, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -323,13 +326,13 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         tabbedPaneMain.addTab("WhitePaper", pnlWhitepaperScreen);
 
-        pnlDashboard.setBackground(new java.awt.Color(2, 136, 138));
+        pnlDashboard.setBackground(new java.awt.Color(204, 204, 255));
         pnlDashboard.setMaximumSize(new java.awt.Dimension(1125, 768));
         pnlDashboard.setMinimumSize(new java.awt.Dimension(1125, 768));
         pnlDashboard.setPreferredSize(new java.awt.Dimension(1125, 768));
         pnlDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblEnergyTransactions.setBackground(new java.awt.Color(0, 255, 255));
+        tblEnergyTransactions.setBackground(new java.awt.Color(153, 153, 255));
         tblEnergyTransactions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -341,6 +344,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 "TransactionID", "UserID", "EnergyUnits", "TokenType", "PaymentAmount", "Energy", "EnergySource ", "Location"
             }
         ));
+        tblEnergyTransactions.setGridColor(new java.awt.Color(204, 204, 255));
         tblEnergyTransactions.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblEnergyTransactionsMouseClicked(evt);
@@ -352,7 +356,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         lblTableHeading.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTableHeading.setText("Energy Supply Transactions");
-        pnlDashboard.add(lblTableHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 240, -1));
+        pnlDashboard.add(lblTableHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
         txtTfldransactionId.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TransactionID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         txtTfldransactionId.addActionListener(new java.awt.event.ActionListener() {
@@ -389,7 +393,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         cmbEnergySource.setBorder(javax.swing.BorderFactory.createTitledBorder("EnergySource"));
         pnlDashboard.add(cmbEnergySource, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 140, 60));
 
-        btnRecordTransaction.setBackground(new java.awt.Color(255, 153, 255));
+        btnRecordTransaction.setBackground(new java.awt.Color(204, 204, 255));
         btnRecordTransaction.setText("Add");
         btnRecordTransaction.setBorder(null);
         btnRecordTransaction.addActionListener(new java.awt.event.ActionListener() {
@@ -397,18 +401,18 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 btnRecordTransactionActionPerformed(evt);
             }
         });
-        pnlDashboard.add(btnRecordTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 110, 44));
+        pnlDashboard.add(btnRecordTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 110, 44));
 
-        btnRemoveRecords.setBackground(new java.awt.Color(255, 153, 255));
+        btnRemoveRecords.setBackground(new java.awt.Color(204, 204, 255));
         btnRemoveRecords.setText("Delete");
         btnRemoveRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveRecordsActionPerformed(evt);
             }
         });
-        pnlDashboard.add(btnRemoveRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 110, 48));
+        pnlDashboard.add(btnRemoveRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, 110, 48));
 
-        btnUpdateRecords.setBackground(new java.awt.Color(255, 153, 255));
+        btnUpdateRecords.setBackground(new java.awt.Color(204, 204, 255));
         btnUpdateRecords.setText("Update");
         btnUpdateRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +429,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         });
         pnlDashboard.add(txtfldLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 430, 145, 61));
 
-        btnClearForm.setBackground(new java.awt.Color(255, 153, 255));
+        btnClearForm.setBackground(new java.awt.Color(204, 204, 255));
         btnClearForm.setText("Clear");
         btnClearForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,16 +437,28 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             }
         });
         pnlDashboard.add(btnClearForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 46));
+
+        lblTransactionErrorMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         pnlDashboard.add(lblTransactionErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 260, 20));
+
+        lblUserIDErrorMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         pnlDashboard.add(lblUserIDErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 300, 10));
+
+        lblErrorEnergyUnits.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         pnlDashboard.add(lblErrorEnergyUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 170, -1));
+
+        lblErrorPaymentAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         pnlDashboard.add(lblErrorPaymentAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 499, 181, -1));
-        pnlDashboard.add(lblLocationErrror, new org.netbeans.lib.awtextra.AbsoluteConstraints(954, 505, 134, -1));
+
+        lblLocationErrror.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pnlDashboard.add(lblLocationErrror, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 500, 190, 20));
 
         cmbEnergy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical", "Thermal", "Mechanical ", "Nuclear" }));
         cmbEnergy.setBorder(javax.swing.BorderFactory.createTitledBorder("Energy"));
         pnlDashboard.add(cmbEnergy, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 145, 61));
-        pnlDashboard.add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 461, 14));
+
+        lblMessage.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnlDashboard.add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 214, 461, 20));
 
         btnSort.setText("Sort");
         btnSort.addActionListener(new java.awt.event.ActionListener() {
@@ -481,9 +497,9 @@ public class EnergyManagementApp extends javax.swing.JFrame {
 
         pnlAboutUs.setBackground(new java.awt.Color(2, 136, 138));
 
-        jLabel1.setText("<html>\n<section style=\"display: flex; justify-content: center; padding: 2rem; background-color: #f9fafc;\">\n  <div style=\"display: flex; max-width: 1200px; flex-direction: row; gap: 1.5rem; align-items: center;\">\n    <!-- Left Image Section -->\n    <div style=\"flex: 1; position: relative;\">\n      <h2>Learn More</h2>\n    </div>\n    <!-- Right Details Section -->\n    <div style=\"flex: 2; display: flex; gap: 1.5rem; flex-wrap: wrap;\">\n      <!-- Detail Cards -->\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">⚡</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Projects Explore</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #d1f2eb; border: 1px solid #27ae60; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">📊</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Statistics Data</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌍</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Zero Emission</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🔋</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Clean Energy</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌾</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Hectare Area</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌬️</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Megawatt Capacity</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n</html>");
+        lblLearnMore.setText("<html>\n<section style=\"display: flex; justify-content: center; padding: 2rem; background-color: #f9fafc;\">\n  <div style=\"display: flex; max-width: 1200px; flex-direction: row; gap: 1.5rem; align-items: center;\">\n    <!-- Left Image Section -->\n    <div style=\"flex: 1; position: relative;\">\n      <h2>Learn More</h2>\n    </div>\n    <!-- Right Details Section -->\n    <div style=\"flex: 2; display: flex; gap: 1.5rem; flex-wrap: wrap;\">\n      <!-- Detail Cards -->\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">⚡</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Projects Explore</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #d1f2eb; border: 1px solid #27ae60; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">📊</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Statistics Data</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌍</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Zero Emission</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🔋</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Clean Energy</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌾</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Hectare Area</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n      <div style=\"background-color: #fff; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); flex: 1;\">\n        <div style=\"font-size: 2rem; margin-bottom: 0.5rem;\">🌬️</div>\n        <h3 style=\"font-size: 1.2rem; margin-bottom: 0.5rem; color: #2c3e50;\">Megawatt Capacity</h3>\n        <p style=\"font-size: 0.9rem; color: #7f8c8d;\">We convert wind turbine to 100% wind energy</p>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n</html>");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/about us image.PNG"))); // NOI18N
+        lblAboutusImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/energymanagement/resources/about us image.PNG"))); // NOI18N
 
         javax.swing.GroupLayout pnlAboutUsLayout = new javax.swing.GroupLayout(pnlAboutUs);
         pnlAboutUs.setLayout(pnlAboutUsLayout);
@@ -491,18 +507,18 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAboutUsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addComponent(lblAboutusImage, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(lblLearnMore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
         pnlAboutUsLayout.setVerticalGroup(
             pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAboutUsLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(pnlAboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblLearnMore, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAboutusImage, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
@@ -679,19 +695,19 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(prgsbarLoading, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                .addContainerGap(418, Short.MAX_VALUE)
+                .addContainerGap(377, Short.MAX_VALUE)
                 .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
-                        .addComponent(lblLogoEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(358, 358, 358))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
                         .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(395, 395, 395)
                         .addComponent(lblStatusPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
+                        .addComponent(lblLogoEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(386, 386, 386))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoadingScreenLayout.createSequentialGroup()
                         .addComponent(lblEnerChain, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(316, 316, 316))))
+                        .addGap(357, 357, 357))))
         );
         pnlLoadingScreenLayout.setVerticalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -895,6 +911,28 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         dialog.setSize(1200, 100);
         dialog.setVisible(true);
     }
+    
+    private boolean isTransactionIdExistsForUpdate(String transactionId, int currentRow) {
+        DefaultTableModel model = (DefaultTableModel) tblEnergyTransactions.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            // Skip the current row to avoid false positives
+            if (i != currentRow && model.getValueAt(i, 0).toString().equals(transactionId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    private boolean isDuplicateTransactionId(String transactionId) {
+    for (int i = 0; i < tblEnergyTransactions.getRowCount(); i++) {
+        String existingTransactionId = tblEnergyTransactions.getValueAt(i, 0).toString(); // Assuming transactionId is in column 0
+        if (transactionId.equals(existingTransactionId)) {
+            return true; // Duplicate found
+        }
+    }
+    return false; // No duplicate
+    }
 
 
     private void btnRecordTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordTransactionActionPerformed
@@ -920,12 +958,69 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         boolean isValid = true;
 
         if (transactionId.isEmpty() && userId.isEmpty() && energyUnits.isEmpty()
-                && paymentAmount.isEmpty() && location.isEmpty()) {
-            lblMessage.setText("Please Enter Valid Values"); // Set general error message
+        && paymentAmount.isEmpty() && location.isEmpty()) {
+            lblTransactionErrorMsg.setText("Transaction ID cannot be empty");
+            lblTransactionErrorMsg.setForeground(Color.RED);
+            lblUserIDErrorMsg.setText("User ID cannot be empty");
+            lblUserIDErrorMsg.setForeground(Color.RED);
+            lblErrorEnergyUnits.setText("Energy Units cannot be empty");
+            lblErrorEnergyUnits.setForeground(Color.RED);
+            lblErrorPaymentAmount.setText("Payment Amount cannot be empty");
+            lblErrorPaymentAmount.setForeground(Color.RED);
+            lblLocationErrror.setText("Location cannot be empty");
+            lblLocationErrror.setForeground(Color.RED);
+            lblMessage.setText("Input Fields cannot be empty"); // General error message
             lblMessage.setForeground(Color.RED); // Set text color to red
             return; // Exit early since all fields are empty
         }
+        
+        if (transactionId.isEmpty()) {
+            lblTransactionErrorMsg.setText("Transaction ID cannot be empty");
+            highlightInvalidField(txtTfldransactionId, "Transaction ID", Color.RED);
+        } else {
+            lblTransactionErrorMsg.setText("");
+            resetFieldBorderWithTitle(txtTfldransactionId, "Transaction ID");
+        }
 
+        if (userId.isEmpty()) {
+            lblUserIDErrorMsg.setText("User ID cannot be empty");
+            highlightInvalidField(txtfldUserId, "User ID", Color.RED);
+        } else {
+            lblUserIDErrorMsg.setText("");
+            resetFieldBorderWithTitle(txtfldUserId, "User ID");
+        }
+
+        if (energyUnits.isEmpty()) {
+            lblErrorEnergyUnits.setText("Energy Units cannot be empty");
+            highlightInvalidField(txtfldEnergyUnits, "Energy Units", Color.RED);
+        } else {
+            lblErrorEnergyUnits.setText("");
+            resetFieldBorderWithTitle(txtfldEnergyUnits, "Energy Units");
+        }
+
+        if (paymentAmount.isEmpty()) {
+            lblErrorPaymentAmount.setText("Payment Amount cannot be empty");
+            highlightInvalidField(txtfldPaymentAmount, "Payment Amount", Color.RED);
+        } else {
+            lblErrorPaymentAmount.setText("");
+            resetFieldBorderWithTitle(txtfldPaymentAmount, "Payment Amount");
+        }
+
+        if (location.isEmpty()) {
+            lblLocationErrror.setText("Location cannot be empty");
+            highlightInvalidField(txtfldLocation, "Location", Color.RED);
+        } else {
+            lblLocationErrror.setText("");
+            resetFieldBorderWithTitle(txtfldLocation, "Location");
+        }
+        
+        // Check for duplicate transaction ID
+        if (isDuplicateTransactionId(transactionId)) {
+            lblTransactionErrorMsg.setText("Duplicate Transaction ID");
+            lblTransactionErrorMsg.setForeground(Color.RED);
+//            btnRecordTransaction.setEnabled(false); // Disable the Add button
+            return; // Exit early
+        }
         // Validate inputs
         if (!ValidationUtil.isValidTransactionId(transactionId, lblTransactionErrorMsg)) {
             isValid = false;
@@ -1066,6 +1161,12 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                     isValid = false;
                     highlightInvalidField(txtfldLocation, "Location", Color.RED);
                 }
+                
+                if (isTransactionIdExistsForUpdate(transactionId, selectedRow)) {
+                    isValid = false;
+                    highlightInvalidField(txtTfldransactionId, "Transaction ID exists", Color.RED);
+                    lblTransactionErrorMsg.setText("Transaction ID already exists in the system.");
+                }
 
                 if (isValid) {
                     // Update transaction data in the table
@@ -1103,6 +1204,13 @@ public class EnergyManagementApp extends javax.swing.JFrame {
             cmbTokenType.setSelectedIndex(0);
             cmbEnergySource.setSelectedIndex(0);
             cmbEnergy.setSelectedIndex(0);
+            lblMessage.setText("");
+            // Clear all Error Messages.
+            lblTransactionErrorMsg.setText("");
+            lblUserIDErrorMsg.setText("");
+            lblErrorEnergyUnits.setText("");
+            lblErrorPaymentAmount.setText("");
+            lblLocationErrror.setText("");
             lblMessage.setText("");
         }
     }//GEN-LAST:event_btnClearFormActionPerformed
@@ -1259,10 +1367,9 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSortingIn;
     private javax.swing.JComboBox<String> cmbTokenType;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAboutusImage;
     private javax.swing.JLabel lblBackgroundImage;
     private javax.swing.JLabel lblChillGuy;
     private javax.swing.JLabel lblEnerChain;
@@ -1272,6 +1379,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblEth;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblHomeSubSlogan;
+    private javax.swing.JLabel lblLearnMore;
     private javax.swing.JLabel lblLeftLOgo;
     private javax.swing.JLabel lblLocationErrror;
     private javax.swing.JLabel lblLoginError;
