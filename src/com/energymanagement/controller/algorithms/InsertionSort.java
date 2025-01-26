@@ -42,26 +42,26 @@ public class InsertionSort {
 
         // Validate input: the list cannot be null or empty
         if (energySortList == null || energySortList.isEmpty()) {
-            throw new IllegalArgumentException("Drone list cannot be null or empty.");
+            throw new IllegalArgumentException(" list cannot be null or empty.");
         }
 
         // Insertion Sort algorithm
         for (int i = 1; i < energySortList.size(); i++) {
             // The current element (EnergyTransactionModel) to be inserted
-            EnergyTransactionModel currentDrone = energySortList.get(i);
+            EnergyTransactionModel currentTransaction = energySortList.get(i);
 
             // The index of the previous element for comparison
             int j = i - 1;
 
-            // Move elements that are greater than currentDrone (or less, based on order)
-            while (j >= 0 && shouldSwap(currentDrone.getTransactionId(), energySortList.get(j).getTransactionId(), isDesc)) {
+            // Move elements that are greater than currentTransaction (or less, based on order)
+            while (j >= 0 && shouldSwap(currentTransaction.getTransactionId(), energySortList.get(j).getTransactionId(), isDesc)) {
                 // Shift element to the right to make space for the current element
                 energySortList.set(j + 1, energySortList.get(j));
                 j = j - 1; // Move the index to the left
             }
 
             // Insert the current element in the correct position
-            energySortList.set(j + 1, currentDrone);
+            energySortList.set(j + 1, currentTransaction);
         }
 
         // Return the sorted list

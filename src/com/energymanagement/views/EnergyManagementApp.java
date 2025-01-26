@@ -236,7 +236,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         lblForgotPassword = new javax.swing.JLabel();
         lblLoginError = new javax.swing.JLabel();
         pwdFldLogin = new javax.swing.JPasswordField();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rememberMeButton = new javax.swing.JRadioButton();
         pnlLoadingScreen = new javax.swing.JPanel();
         prgsbarLoading = new javax.swing.JProgressBar();
         lblLogoEnerChain = new javax.swing.JLabel();
@@ -617,8 +617,8 @@ public class EnergyManagementApp extends javax.swing.JFrame {
         pwdFldLogin.setForeground(new java.awt.Color(255, 255, 255));
         pwdFldLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP)));
 
-        jRadioButton1.setForeground(new java.awt.Color(0, 255, 255));
-        jRadioButton1.setText("Remember this computer.");
+        rememberMeButton.setForeground(new java.awt.Color(0, 255, 255));
+        rememberMeButton.setText("Remember this computer.");
 
         javax.swing.GroupLayout pnlLoginScreenLayout = new javax.swing.GroupLayout(pnlLoginScreen);
         pnlLoginScreen.setLayout(pnlLoginScreenLayout);
@@ -635,7 +635,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                         .addGap(80, 80, 80))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
                         .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rememberMeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblForgotPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(90, 90, 90))
@@ -659,7 +659,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblForgotPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(rememberMeButton)
                 .addGap(12, 12, 12)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1367,7 +1367,6 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSortingIn;
     private javax.swing.JComboBox<String> cmbTokenType;
     private javax.swing.JButton jButton1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAboutusImage;
     private javax.swing.JLabel lblBackgroundImage;
@@ -1406,6 +1405,7 @@ public class EnergyManagementApp extends javax.swing.JFrame {
     private javax.swing.JPanel pnlWhitepaperScreen;
     private javax.swing.JProgressBar prgsbarLoading;
     private javax.swing.JPasswordField pwdFldLogin;
+    private javax.swing.JRadioButton rememberMeButton;
     private javax.swing.JTabbedPane tabbedPaneMain;
     private javax.swing.JTable tblEnergyTransactions;
     private javax.swing.JTextField txtFieldLOginUsername;
